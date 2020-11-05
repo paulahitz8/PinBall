@@ -25,6 +25,6 @@ Description.
 - Use down arrow to use the propeller
 - Use left/right arrows to use left/right flippers
 
-### Original Game
+## Original Game
 
 - [Firefighter Pinball](https://www.classicgame.com/game/Firefighter+Pinball)
