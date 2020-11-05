@@ -22,8 +22,8 @@ Description.
 
 ## Controls
 
-- Use down arrow to use the propeller
-- Use left/right arrows to use left/right flippers
+- Down arrow to use propeller
+- Left and right arrows for flippers
 
 ## Original Game
 
