@@ -45,6 +45,17 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	ball->GetPosition(pos.x, pos.y);
+	App->renderer->Blit(ballTex, pos.x, pos.y, NULL);
+
+	right1Flipper->GetPosition(pos.x, pos.y);
+	App->renderer->Blit(right1FlipperTex, pos.x, pos.y, &right1FlipperRect, 1.0f, right1Flipper->GetRotation());
+
+	right2Flipper->GetPosition(pos.x, pos.y);
+	App->renderer->Blit(right2FlipperTex, pos.x, pos.y, &right2FlipperRect, 1.0f, right2Flipper->GetRotation());
+
+	leftFlipper->GetPosition(pos.x, pos.y);
+	App->renderer->Blit(leftFlipperTex, pos.x, pos.y, &leftFlipperRect, 1.0f, leftFlipper->GetRotation());
 
 
 	return UPDATE_CONTINUE;
