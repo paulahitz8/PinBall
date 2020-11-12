@@ -1,9 +1,0 @@
-﻿  ModulePhysics.cpp
-D:\Github\PinBall\ModulePhysics.cpp(457,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\Github\PinBall\ModulePhysics.cpp(559,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Github\PinBall\ModulePhysics.cpp(560,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Github\PinBall\ModulePhysics.cpp(604,20): warning C4018: '<': signed/unsigned mismatch
-D:\Github\PinBall\ModulePhysics.cpp(785,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\Github\PinBall\ModulePhysics.cpp(786,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\Github\PinBall\ModulePhysics.cpp(792,27): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
-  SDL Game.vcxproj -> D:\Github\PinBall\Debug\2D Physics - class 4.exe
