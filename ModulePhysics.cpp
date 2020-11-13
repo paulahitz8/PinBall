@@ -470,25 +470,25 @@ bool ModulePhysics::Start()
 	//big_ball->CreateFixture(&fixture);
 
 
-	CreateChain(0, 0, background, 147);
-	CreateChain(0, 0, background2, 101);
-	CreateChain(0, 0, randomcollider, 17);
-	CreateChain(0, 0, rectangle1, 8);
-	CreateChain(0, 0, rectangle2, 8);
-	CreateChain(0, 0, hockeyleft, 22);
-	CreateChain(0, 0, hockeyright, 20);
-	CreateChain(0, 0, bumperclock, 26);
-	CreateChain(0, 0, backbumperleft, 10);
-	CreateChain(0, 0, bumperleft, 14);
-	CreateChain(0, 0, backbumperright, 14);
-	CreateChain(0, 0, bumperright, 16);
-	CreateChain(0, 0, circle1, 24);
-	CreateChain(0, 0, circle2, 24);
-	CreateChain(0, 0, circle3, 20);
-	CreateChain(0, 0, waterwall1, 96);
-	CreateChain(0, 0, waterwall2, 104);
-	CreateChain(0, 0, waterboost1, 8);
-	CreateChain(0, 0, waterboost2, 8);
+	CreateChain(0, 0, background, 147, b2_staticBody);
+	CreateChain(0, 0, background2, 101, b2_staticBody);
+	CreateChain(0, 0, randomcollider, 17, b2_staticBody);
+	CreateChain(0, 0, rectangle1, 8, b2_staticBody);
+	CreateChain(0, 0, rectangle2, 8, b2_staticBody);
+	CreateChain(0, 0, hockeyleft, 22, b2_staticBody);
+	CreateChain(0, 0, hockeyright, 20, b2_staticBody);
+	CreateChain(0, 0, bumperclock, 26, b2_staticBody);
+	CreateChain(0, 0, backbumperleft, 10, b2_staticBody);
+	CreateChain(0, 0, bumperleft, 14, b2_staticBody);
+	CreateChain(0, 0, backbumperright, 14, b2_staticBody);
+	CreateChain(0, 0, bumperright, 16, b2_staticBody);
+	CreateChain(0, 0, circle1, 24, b2_staticBody);
+	CreateChain(0, 0, circle2, 24, b2_staticBody);
+	CreateChain(0, 0, circle3, 20, b2_staticBody);
+	CreateChain(0, 0, waterwall1, 96, b2_staticBody);
+	CreateChain(0, 0, waterwall2, 104, b2_staticBody);
+	CreateChain(0, 0, waterboost1, 8, b2_staticBody);
+	CreateChain(0, 0, waterboost2, 8, b2_staticBody);
 
 	return true;
 }
@@ -512,7 +512,7 @@ update_status ModulePhysics::PreUpdate()
 	return UPDATE_CONTINUE;
 }
 
-PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius)
+PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius, b2BodyType type)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -536,7 +536,7 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius)
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height)
+PhysBody* ModulePhysics::CreateRectangle(int x, int y, int width, int height, b2BodyType type)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -588,11 +588,11 @@ PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int heig
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
+PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, b2BodyType type)
 {
 	b2BodyDef body;
 	//body.type = b2_dynamicBody;
-	body.type = b2_staticBody;
+	body.type = type;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
 	b2Body* b = world->CreateBody(&body);
