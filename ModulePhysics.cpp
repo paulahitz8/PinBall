@@ -469,25 +469,25 @@ bool ModulePhysics::Start()
 	//big_ball->CreateFixture(&fixture);
 
 
-	CreateChain(0, 0, background, 146, b2_staticBody);
-	CreateChain(0, 0, background2, 101, b2_staticBody);
-	CreateChain(0, 0, randomcollider, 17, b2_staticBody);
-	CreateChain(0, 0, rectangle1, 8, b2_staticBody);
-	CreateChain(0, 0, rectangle2, 8, b2_staticBody);
-	CreateChain(0, 0, hockeyleft, 22, b2_staticBody);
-	CreateChain(0, 0, hockeyright, 20, b2_staticBody);
-	CreateChain(0, 0, bumperclock, 26, b2_staticBody);
-	CreateChain(0, 0, backbumperleft, 10, b2_staticBody);
-	CreateChain(0, 0, bumperleft, 14, b2_staticBody);
-	CreateChain(0, 0, backbumperright, 14, b2_staticBody);
-	CreateChain(0, 0, bumperright, 14, b2_staticBody);
-	CreateChain(0, 0, circle1, 24, b2_staticBody);
-	CreateChain(0, 0, circle2, 24, b2_staticBody);
-	CreateChain(0, 0, circle3, 20, b2_staticBody);
-	//CreateChain(0, 0, waterwall1, 96, b2_staticBody);
-	//CreateChain(0, 0, waterwall2, 104, b2_staticBody);
-	CreateChain(0, 0, waterboost1, 8, b2_staticBody);
-	//CreateChain(0, 0, waterboost2, 8, b2_staticBody);
+	CreateChain(0, 0, background, 146, b2_staticBody, 0);
+	CreateChain(0, 0, background2, 101, b2_staticBody, 0);
+	CreateChain(0, 0, randomcollider, 17, b2_staticBody, 0);
+	CreateChain(0, 0, rectangle1, 8, b2_staticBody, 0);
+	CreateChain(0, 0, rectangle2, 8, b2_staticBody, 0);
+	CreateChain(0, 0, hockeyleft, 22, b2_staticBody, 0);
+	CreateChain(0, 0, hockeyright, 20, b2_staticBody, 0);
+	CreateChain(0, 0, bumperclock, 26, b2_staticBody, 2);
+	CreateChain(0, 0, backbumperleft, 10, b2_staticBody, 0);
+	CreateChain(0, 0, bumperleft, 14, b2_staticBody, 2);
+	CreateChain(0, 0, backbumperright, 14, b2_staticBody, 0);
+	CreateChain(0, 0, bumperright, 14, b2_staticBody, 2);
+	CreateChain(0, 0, circle1, 24, b2_staticBody, 0);
+	CreateChain(0, 0, circle2, 24, b2_staticBody, 0);
+	CreateChain(0, 0, circle3, 20, b2_staticBody, 0);
+	//CreateChain(0, 0, waterwall1, 96, b2_staticBody, 0);
+	//CreateChain(0, 0, waterwall2, 104, b2_staticBody, 0);
+	CreateChain(0, 0, waterboost1, 8, b2_staticBody, 0);
+	//CreateChain(0, 0, waterboost2, 8, b2_staticBody, 0);
 
 	return true;
 }
@@ -587,7 +587,7 @@ PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int heig
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, b2BodyType type)
+PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, b2BodyType type, int restitution)
 {
 	b2BodyDef body;
 	body.type = type;
@@ -608,6 +608,7 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, b2Body
 
 	b2FixtureDef fixture;
 	fixture.shape = &shape;
+	fixture.restitution = restitution;
 
 	b->CreateFixture(&fixture);
 
