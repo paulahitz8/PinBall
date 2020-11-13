@@ -14,8 +14,7 @@
 
 
 // Pivot 0, 0
-int background[147] = {
-	597, 931,
+int background[146] = {
 	597, 878,
 	604, 878,
 	603, 765,
@@ -65,10 +64,10 @@ int background[147] = {
 	510, 554,
 	480, 545,
 	477, 405,
-	532, 347,
-	538, 330,
-	529, 321,
-	527, 304,
+	541, 346,
+	546, 331,
+	541, 313,
+	534, 302,
 	513, 270,
 	497, 239,
 	477, 207,
@@ -79,7 +78,7 @@ int background[147] = {
 	435, 145,
 	482, 195,
 	514, 244,
-	542, 318,
+	546, 316,
 	550, 350,
 	554, 442,
 	556, 528,
@@ -88,7 +87,7 @@ int background[147] = {
 	554, 877,
 	562, 877,
 	562, 931,
-	597
+	597, 931
 };
 
 // Pivot 0, 0
@@ -173,26 +172,26 @@ int rectangle2[8] = {
 };
 
 int hockeyleft[22] = {
-	89, 638,
-	102, 639,
-	100, 703,
+	98, 645,
+	98, 703,
 	99, 726,
 	107, 747,
-	201, 809,
-	200, 823,
-	188, 830,
-	107, 784,
+	177, 795,
+	176, 809,
+	161, 812,
+	131, 796,
 	89, 755,
-	87, 675
+	88, 648,
+	92, 634
 };
 
 int hockeyright[20] = {
 	486, 639,
 	487, 731,
 	480, 747,
-	387, 810,
-	388, 825,
-	405, 827,
+	411, 794,
+	413, 804,
+	424, 815,
 	471, 790,
 	493, 760,
 	499, 726,
@@ -246,9 +245,8 @@ int backbumperright[14] = {
 };
 
 //rebota
-int bumperright[16] = {
-	446, 641,
-	440, 633,
+int bumperright[14] = {
+	442, 630,
 	433, 642,
 	393, 741,
 	393, 751,
@@ -444,6 +442,7 @@ bool ModulePhysics::Start()
 {
 	LOG("Creating Physics 2D environment");
 
+	debug = !debug;
 	world = new b2World(b2Vec2(GRAVITY_X, -GRAVITY_Y));
 	world->SetContactListener(this);
 
@@ -470,7 +469,7 @@ bool ModulePhysics::Start()
 	//big_ball->CreateFixture(&fixture);
 
 
-	CreateChain(0, 0, background, 147, b2_staticBody);
+	CreateChain(0, 0, background, 146, b2_staticBody);
 	CreateChain(0, 0, background2, 101, b2_staticBody);
 	CreateChain(0, 0, randomcollider, 17, b2_staticBody);
 	CreateChain(0, 0, rectangle1, 8, b2_staticBody);
@@ -481,14 +480,14 @@ bool ModulePhysics::Start()
 	CreateChain(0, 0, backbumperleft, 10, b2_staticBody);
 	CreateChain(0, 0, bumperleft, 14, b2_staticBody);
 	CreateChain(0, 0, backbumperright, 14, b2_staticBody);
-	CreateChain(0, 0, bumperright, 16, b2_staticBody);
+	CreateChain(0, 0, bumperright, 14, b2_staticBody);
 	CreateChain(0, 0, circle1, 24, b2_staticBody);
 	CreateChain(0, 0, circle2, 24, b2_staticBody);
 	CreateChain(0, 0, circle3, 20, b2_staticBody);
-	CreateChain(0, 0, waterwall1, 96, b2_staticBody);
-	CreateChain(0, 0, waterwall2, 104, b2_staticBody);
+	//CreateChain(0, 0, waterwall1, 96, b2_staticBody);
+	//CreateChain(0, 0, waterwall2, 104, b2_staticBody);
 	CreateChain(0, 0, waterboost1, 8, b2_staticBody);
-	CreateChain(0, 0, waterboost2, 8, b2_staticBody);
+	//CreateChain(0, 0, waterboost2, 8, b2_staticBody);
 
 	return true;
 }
@@ -625,7 +624,7 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, b2Body
 // 
 update_status ModulePhysics::PostUpdate()
 {
-	if(App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		debug = !debug;
 
 	if(!debug)
@@ -707,7 +706,7 @@ update_status ModulePhysics::PostUpdate()
 			}
 
 			// TODO 1: If mouse button 1 is pressed ...
-			if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN)
+			if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN && debug)
 			{
 				if (f->TestPoint(mouse_position))
 					body_clicked = b;

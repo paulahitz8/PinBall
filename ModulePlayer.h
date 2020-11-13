@@ -23,10 +23,7 @@ public:
 
 	uint lifeCount = 3;
 
-	//
 	bool isFlippin;
-
-	
 	bool isDead = false;
 	bool waterSlide = false;
 
@@ -37,6 +34,7 @@ public:
 
 	iPoint posInitial;
 	iPoint pos;
+	iPoint ballPos;
 
 	PhysBody* ball = nullptr;
 

@@ -79,6 +79,7 @@ struct b2RevoluteJointDef : public b2JointDef
 	/// The maximum motor torque used to achieve the desired motor speed.
 	/// Usually in N-m.
 	float32 maxMotorTorque;
+	float32 maxMotorTorque2;
 };
 
 /// A revolute joint constrains two bodies to share a common point while they
