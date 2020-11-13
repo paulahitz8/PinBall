@@ -22,6 +22,10 @@ public:
 public:
 
 	uint lifeCount = 3;
+
+	//
+	bool isFlippin;
+
 	
 	bool isDead = false;
 	bool waterSlide = false;

@@ -104,10 +104,6 @@ bool ModulePlayer::Start()
 
 	leftFlipperJoint = (b2RevoluteJoint*)App->physics->world->CreateJoint(&joint);
 
-
-
-	leftFlipper_pivot = App->physics->CreateCircle(150, 500, 7, b2_staticBody);
-
 	return true;
 }
 
@@ -152,6 +148,61 @@ update_status ModulePlayer::Update()
 	//App->renderer->Blit(leftFlipperTex, 176, 805, &r3, 1.0f, leftFlipper->GetRotation());
 	App->renderer->Blit(leftFlipperTex, 176, 805, &r3);
 
+
+	//Controlls
+
+	//if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT && lifeCount != 0)
+	//{
+	//	b2Vec2 impulse = b2Vec2(0.0f, -3.5f);
+	//	b2Vec2 point = ball->body->GetLocalCenter();
+
+	//	ball->body->ApplyLinearImpulse(impulse, point, true);
+	//}
+
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
+	{
+		leftFlipperJoint->EnableMotor(true);
+		if (isFlippin == false)
+		{
+			//App->audio->PlayFx(flipperSound);
+		}
+		isFlippin = true;
+	}
+
+	else if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_UP)
+	{
+		leftFlipperJoint->EnableMotor(false);
+		isFlippin = false;
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
+	{
+		right1FlipperJoint->EnableMotor(true);
+		right1FlipperJoint->EnableMotor(true);
+		if (isFlippin == false)
+		{
+			//App->audio->PlayFx(flipperSound);
+		}
+		isFlippin = true;
+	}
+
+	else if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_UP)
+	{
+		right1FlipperJoint->EnableMotor(false);
+		right1FlipperJoint->EnableMotor(false);
+		isFlippin = false;
+	}
+
+	//if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+	//	propeller1Joint->EnableMotor(true);
+	//	//App->audio->PlayFx(horseSound);
+	//	//horse.Reset();
+	//}
+
+	//else
+	//{
+	//	propeller1Joint->EnableMotor(false);
+	//}
 	
 
 	return UPDATE_CONTINUE;
