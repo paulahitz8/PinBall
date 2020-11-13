@@ -34,6 +34,9 @@ public:
 class ModulePhysics : public Module, public b2ContactListener // TODO
 {
 public:
+
+	b2World* world;
+
 	ModulePhysics(Application* app, bool start_enabled = true);
 	~ModulePhysics();
 
@@ -53,7 +56,7 @@ public:
 private:
 
 	bool debug;
-	b2World* world;
+
 	b2MouseJoint* mouse_joint;
 	b2Body* ground;
 };
