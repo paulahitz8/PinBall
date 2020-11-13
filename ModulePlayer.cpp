@@ -25,11 +25,7 @@ bool ModulePlayer::Start()
 	leftFlipperTex = App->textures->Load("pinball/flipperdownleft.png");
 	ballTex = App->textures->Load("pinball/ball.png");
 
-
-	//right1FlipperRect = { 307, 804, 104, 47 };
-	//right2FlipperRect= { 470, 328, 79, 73 };
-	//leftFlipperRect = { 176, 805, 104, 46 };
-	//posInitial = { 566, 815 };
+	posInitial = { 566, 815 };
 
 	return true;
 }

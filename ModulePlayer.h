@@ -31,10 +31,6 @@ public:
 	SDL_Texture* leftFlipperTex = nullptr;
 	SDL_Texture* ballTex = nullptr;
 
-	//SDL_Rect right1FlipperRect;// = { 307, 804, 104, 47 };
-	//SDL_Rect right2FlipperRect;// = { 470, 328, 79, 73 };
-	//SDL_Rect leftFlipperRect;// = { 176, 805, 104, 46 };
-
 	iPoint posInitial;
 	iPoint pos;
 
