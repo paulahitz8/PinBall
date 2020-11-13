@@ -231,12 +231,14 @@ update_status ModulePlayer::Update()
 	}
 	
 
-	if (ballPos.y > 900)
+	if (ballPos.y > 850)
 	{
 		
 		if (lifeCount != 0)
 		{
-			ballPos = posInitial;
+			delete ball;
+			//ball->body = nullptr;
+			ball = App->physics->CreateCircle(posInitial.x, posInitial.y, 15, b2_dynamicBody);
 			lifeCount--;
 		}
 		else
