@@ -146,6 +146,15 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	if (totalPass == true)
+	{
+		timer++;
+		if (timer == 20)
+		{
+			totalPass = false;
+			timer = 0;
+		}
+	}
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
 		propeller1Joint->EnableMotor(true);
 	}
@@ -300,7 +309,6 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			currentEmergency1Animation = &emergency;
 			hasPassed1 = true;
 		}
-		totalPass = false;
 	}
 
 	else if (bodyA == App->scene_intro->rectangle2S)
@@ -311,7 +319,6 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			currentEmergency2Animation = &emergency;
 			hasPassed2 = true;
 		}
-		totalPass = false;
 	} 
 	else if (bodyA == App->scene_intro->rectangle3S)
 	{
@@ -321,7 +328,6 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			currentEmergency3Animation = &emergency;
 			hasPassed3 = true;
 		}
-		totalPass = false;
 	} 	
 }
 
