@@ -41,6 +41,7 @@ public:
 	bool hasPassed2 = false;
 	bool hasPassed3 = false;
 	bool totalPass = false;
+	bool isTouchingBalls = false;
 
 	SDL_Texture* right1FlipperTex = nullptr;
 	SDL_Texture* right2FlipperTex = nullptr;
