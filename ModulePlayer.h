@@ -43,9 +43,9 @@ public:
 	PhysBody* propeller2 = nullptr;
 	PhysBody* propeller3 = nullptr;
 
-	PhysBody* propeller1_pivot = nullptr;
-	PhysBody* propeller2_pivot = nullptr;
-	PhysBody* propeller3_pivot = nullptr;
+	PhysBody* propeller1Pivot = nullptr;
+	PhysBody* propeller2Pivot = nullptr;
+	PhysBody* propeller3Pivot = nullptr;
 
 	b2PrismaticJoint* propeller1Joint;
 	b2PrismaticJoint* propeller2Joint;
@@ -55,9 +55,9 @@ public:
 	PhysBody* right2Flipper = nullptr;
 	PhysBody* leftFlipper = nullptr;
 
-	PhysBody* right1Flipper_pivot = nullptr;
-	PhysBody* right2Flipper_pivot = nullptr;
-	PhysBody* leftFlipper_pivot = nullptr;
+	PhysBody* right1FlipperPivot = nullptr;
+	PhysBody* right2FlipperPivot = nullptr;
+	PhysBody* leftFlipperPivot = nullptr;
 	 
 	b2RevoluteJoint* right1FlipperJoint = nullptr;
 	b2RevoluteJoint* right2FlipperJoint = nullptr;

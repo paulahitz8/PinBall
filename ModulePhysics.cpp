@@ -5,6 +5,7 @@
 #include "ModulePhysics.h"
 #include "p2Point.h"
 #include "math.h"
+#include "ModulePlayer.h"
 
 #ifdef _DEBUG
 #pragma comment( lib, "Box2D/libx86/Debug/Box2D.lib" )
@@ -469,24 +470,24 @@ bool ModulePhysics::Start()
 	//big_ball->CreateFixture(&fixture);
 
 
-	CreateChain(0, 0, background, 146, b2_staticBody, 0);
-	CreateChain(0, 0, background2, 101, b2_staticBody, 0);
-	CreateChain(0, 0, randomcollider, 17, b2_staticBody, 0);
-	CreateChain(0, 0, rectangle1, 8, b2_staticBody, 0);
-	CreateChain(0, 0, rectangle2, 8, b2_staticBody, 0);
-	CreateChain(0, 0, hockeyleft, 22, b2_staticBody, 0);
-	CreateChain(0, 0, hockeyright, 20, b2_staticBody, 0);
-	CreateChain(0, 0, bumperclock, 26, b2_staticBody, 2);
-	CreateChain(0, 0, backbumperleft, 10, b2_staticBody, 0);
-	CreateChain(0, 0, bumperleft, 14, b2_staticBody, 2);
-	CreateChain(0, 0, backbumperright, 14, b2_staticBody, 0);
-	CreateChain(0, 0, bumperright, 14, b2_staticBody, 2);
-	CreateChain(0, 0, circle1, 24, b2_staticBody, 0);
-	CreateChain(0, 0, circle2, 24, b2_staticBody, 0);
-	CreateChain(0, 0, circle3, 20, b2_staticBody, 0);
-	//CreateChain(0, 0, waterwall1, 96, b2_staticBody, 0);
-	//CreateChain(0, 0, waterwall2, 104, b2_staticBody, 0);
-	CreateChain(0, 0, waterboost1, 8, b2_staticBody, 0);
+	CreateChain(0, 0, background, 146, b2_staticBody, 0, true);
+	CreateChain(0, 0, background2, 101, b2_staticBody, 0, true);
+	CreateChain(0, 0, randomcollider, 17, b2_staticBody, 0, true);
+	CreateChain(0, 0, rectangle1, 8, b2_staticBody, 0, true);
+	CreateChain(0, 0, rectangle2, 8, b2_staticBody, 0, true);
+	CreateChain(0, 0, hockeyleft, 22, b2_staticBody, 0, true);
+	CreateChain(0, 0, hockeyright, 20, b2_staticBody, 0, true);
+	CreateChain(0, 0, bumperclock, 26, b2_staticBody, 2, true);
+	CreateChain(0, 0, backbumperleft, 10, b2_staticBody, 0, true);
+	CreateChain(0, 0, bumperleft, 14, b2_staticBody, 2, true);
+	CreateChain(0, 0, backbumperright, 14, b2_staticBody, 0, true);
+	CreateChain(0, 0, bumperright, 14, b2_staticBody, 2, true);
+	CreateChain(0, 0, circle1, 24, b2_staticBody, 0, true);
+	CreateChain(0, 0, circle2, 24, b2_staticBody, 0, true);
+	CreateChain(0, 0, circle3, 20, b2_staticBody, 0, true);
+	CreateChain(0, 0, waterwall1, 96, b2_staticBody, 0, false);
+	CreateChain(0, 0, waterwall2, 104, b2_staticBody, 0, false);
+	//CreateChain(0, 0, waterboost1, 8, b2_staticBody, 0);
 	//CreateChain(0, 0, waterboost2, 8, b2_staticBody, 0);
 
 	return true;
@@ -587,11 +588,13 @@ PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int heig
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, b2BodyType type, int restitution)
+PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, b2BodyType type, int restitution, bool active)
 {
 	b2BodyDef body;
 	body.type = type;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+	body.active = active;
+
 
 	b2Body* b = world->CreateBody(&body);
 
@@ -632,10 +635,10 @@ update_status ModulePhysics::PostUpdate()
 	if(!debug)
 		return UPDATE_CONTINUE;
 
-	b2Body* body_clicked = nullptr;
-	b2Vec2 mouse_position;
-	mouse_position.x = PIXEL_TO_METERS(App->input->GetMouseX());
-	mouse_position.y = PIXEL_TO_METERS(App->input->GetMouseY());
+	b2Body* ballClick = nullptr;
+	b2Vec2 mousePos;
+	mousePos.x = PIXEL_TO_METERS(App->input->GetMouseX());
+	mousePos.y = PIXEL_TO_METERS(App->input->GetMouseY());
 
 	// Bonus code: this will iterate all objects in the world and draw the circles
 	// You need to provide your own macro to translate meters to pixels
@@ -690,7 +693,7 @@ update_status ModulePhysics::PostUpdate()
 					}
 
 					v = b->GetWorldPoint(shape->m_vertices[0]);
-					App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
+					if(isActive == true) App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
 				}
 				break;
 
@@ -710,8 +713,8 @@ update_status ModulePhysics::PostUpdate()
 			// TODO 1: If mouse button 1 is pressed ...
 			if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_DOWN && debug)
 			{
-				if (f->TestPoint(mouse_position))
-					body_clicked = b;
+				if (f->TestPoint(mousePos))
+					ballClick = b;
 			}
 			// test if the current body contains mouse position
 		}
@@ -721,15 +724,15 @@ update_status ModulePhysics::PostUpdate()
 	// so we can pull it around
 	// TODO 2: If a body was selected, create a mouse joint
 	// using mouse_joint class property
-	if (body_clicked != nullptr)
+	if (ballClick != nullptr)
 	{
 		b2MouseJointDef def;
 		def.bodyA = ground;
-		def.bodyB = body_clicked;
-		def.target = mouse_position;
+		def.bodyB = ballClick;
+		def.target = mousePos;
 		def.dampingRatio = 0.5f;
 		def.frequencyHz = 2.0f;
-		def.maxForce = 100.0f * body_clicked->GetMass();
+		def.maxForce = 100.0f * ballClick->GetMass();
 		mouse_joint = (b2MouseJoint*)world->CreateJoint(&def);
 	}
 
@@ -737,7 +740,7 @@ update_status ModulePhysics::PostUpdate()
 	// target position and draw a red line between both anchor points
 	if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_REPEAT && mouse_joint != nullptr)
 	{
-		mouse_joint->SetTarget(mouse_position);
+		mouse_joint->SetTarget(mousePos);
 	}
 
 	// TODO 4: If the player releases the mouse button, destroy the joint
@@ -745,7 +748,7 @@ update_status ModulePhysics::PostUpdate()
 	{
 		world->DestroyJoint(mouse_joint);
 		mouse_joint = nullptr;
-		body_clicked = nullptr;
+		ballClick = nullptr;
 	}
 	return UPDATE_CONTINUE;
 }
