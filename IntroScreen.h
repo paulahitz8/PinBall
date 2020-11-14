@@ -7,7 +7,7 @@ class IntroScreen : public Module
 {
 public:
 
-	IntroScreen(Application* app, bool start_enabled = true);
+	IntroScreen(Application* app, bool start_enabled = false);
 	~IntroScreen();
 
 	bool Start();

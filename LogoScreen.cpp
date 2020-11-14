@@ -8,7 +8,7 @@
 #include "FadeScreen.h"
 #include "LogoScreen.h"
 #include "IntroScreen.h"
-//#include "ModuleSceneIntro.h"
+#include "ModuleSceneIntro.h"
 //#include "ModulePlayer.h"
 
 
@@ -22,16 +22,15 @@ bool LogoScreen::Start()
 {
 	bool ret = true;
 
-	logoScreen = App->textures->Load("Assets/textures/logoscreen.png");
+	logoScreen = App->textures->Load("pinball/LogoScreen.png");
 
 	//App->audio->PlayMusic("Assets/audio/music/LogoScreenMusic.ogg");
 
-	//app->map->active = false;
-	//app->player->active = false;
-	//app->scene->active = false;
-	//app->titleScreen->active = false;
-	//app->winScreen->active = false;
-	//app->deathScreen->active = false;
+	//App->scene_intro->Disable;
+	//App->player->active = false;
+	//App->scene_intro->active = false;
+	//App->introScreen->active = false;
+	
 
 	return ret;
 }
@@ -51,11 +50,13 @@ update_status LogoScreen::PostUpdate()
 
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_UP) { return UPDATE_STOP; }
 
-	//if (timer == 190)
-	//{
-	//	app->fadeScreen->active = true;
-	//	app->fadeScreen->FadeToBlack(this, (Module*)app->titleScreen, 50.0f);
-	//}
+	if (timer == 190)
+	{
+	
+		App->fade->FadeToBlack(this, (Module*)App->intro, 50.0f);
+		/*app->fadeScreen->active = true;
+		app->fadeScreen->FadeToBlack(this, (Module*)app->titleScreen, 50.0f);*/
+	}
 
 	return UPDATE_CONTINUE;
 }

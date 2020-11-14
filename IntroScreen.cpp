@@ -24,7 +24,7 @@ bool IntroScreen::Start()
 
 	//app->audio->PlayMusic("Assets/audio/music/TitleScreenMusic.ogg");
 
-	introScreen = App->textures->Load("Assets/textures/titleScreen.png");
+	introScreen = App->textures->Load("pinball/LogoScreen.png");
 
 	return ret;
 }
