@@ -14,6 +14,8 @@ class ModuleSceneIntro;
 class ModulePhysics;
 class ModuleFonts;
 //class FadeScreen;
+class LogoScreen;
+class IntroScreen;
 
 class Application
 {
@@ -28,6 +30,9 @@ public:
 	ModulePhysics* physics;
 	ModuleFonts* fonts;
 	//FadeScreen* fade;
+	ModuleFonts* intro;
+	ModuleFonts* logo;
+	
 
 private:
 

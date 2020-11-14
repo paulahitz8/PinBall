@@ -11,6 +11,9 @@
 #include "ModuleSceneIntro.h"
 #include "ModuleFonts.h"
 //#include "FadeScreen.h"
+#include "LogoScreen.h"
+#include "IntroScreen.h"
+
 
 #include "Application.h"
 
@@ -26,6 +29,8 @@ Application::Application()
 	physics = new ModulePhysics(this);
 	fonts = new ModuleFonts(this);
 	//fade = new FadeScreen(this);
+	logo = new LogoScreen(this);
+	intro = new IntroScreen(this);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
