@@ -121,7 +121,7 @@ bool ModulePlayer::Start()
 	jointProp.collideConnected = false;
 	jointProp.enableLimit = true;
 	jointProp.enableMotor = false;
-	jointProp.maxMotorForce = 700;
+	jointProp.maxMotorForce = 3000;
 	jointProp.motorSpeed = 5000;
 
 	propeller1Joint = (b2PrismaticJoint*)App->physics->world->CreateJoint(&jointProp);
@@ -155,7 +155,7 @@ update_status ModulePlayer::Update()
 			timer = 0;
 		}
 	}
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
 		propeller1Joint->EnableMotor(true);
 	}
 
@@ -320,6 +320,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			hasPassed2 = true;
 		}
 	} 
+
 	else if (bodyA == App->scene_intro->rectangle3S)
 	{
 		if (hasPassed3 == false && totalPass == false)
