@@ -33,9 +33,6 @@ bool ModulePlayer::Start()
 
 	ball = App->physics->CreateCircle(posInitial.x, posInitial.y, 15, b2_dynamicBody);
 	
-
-
-
 	//Creating the flippers
 	
 	// Right Lower flipper 
@@ -160,10 +157,6 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-
-
-
-
 
 	//Controls
 
