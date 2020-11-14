@@ -15,7 +15,7 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
+
 
 public:
 	p2List<PhysBody*> circles;
@@ -25,7 +25,7 @@ public:
 	PhysBody* sensor;
 	bool sensed;
 
-	SDL_Texture* background = nullptr;
+
 	SDL_Texture* ball = nullptr;
 	SDL_Texture* circle;
 	SDL_Texture* box;
@@ -33,4 +33,16 @@ public:
 	uint bonus_fx;
 	p2Point<int> ray;
 	bool ray_on;
+
+	SDL_Texture* background = nullptr;
+	
+	PhysBody* ball1S = nullptr;
+	PhysBody* ball2S = nullptr;
+	PhysBody* ball3S = nullptr;
+	PhysBody* rectangle1S = nullptr;
+	PhysBody* rectangle2S = nullptr;
+	PhysBody* rectangle3S = nullptr;
+	PhysBody* waterEntrance1S = nullptr;
+	PhysBody* waterEntrance2S = nullptr;
+
 };

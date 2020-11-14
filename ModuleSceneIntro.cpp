@@ -32,10 +32,18 @@ bool ModuleSceneIntro::Start()
 	rick = App->textures->Load("pinball/rick_head.png");
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
 
+	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
+
+	//Creating sensors
+	ball1S = App->physics->CreateRectangleSensor(295, 192, 61, 58);
+	ball2S = App->physics->CreateRectangleSensor(213, 224, 61, 60);
+	ball3S = App->physics->CreateRectangleSensor(306, 276, 62, 52);
+	rectangle1S = App->physics->CreateRectangleSensor(246, 129, 8, 9);
+	rectangle2S = App->physics->CreateRectangleSensor(290, 130, 8, 9);
+	rectangle3S = App->physics->CreateRectangleSensor(335, 131, 8, 9);
+	waterEntrance1S = App->physics->CreateRectangleSensor(175, 428, 26, 9);
+	waterEntrance2S = App->physics->CreateRectangleSensor(457, 645, 27, 11);
 	
-
-	sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
-
 	return ret;
 }
 
@@ -177,22 +185,3 @@ update_status ModuleSceneIntro::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
-{
-	int x, y;
-
-	//App->audio->PlayFx(bonus_fx);
-
-	/*
-	if(bodyA)
-	{
-		bodyA->GetPosition(x, y);
-		App->renderer->DrawCircle(x, y, 50, 100, 100, 100);
-	}
-
-	if(bodyB)
-	{
-		bodyB->GetPosition(x, y);
-		App->renderer->DrawCircle(x, y, 50, 100, 100, 100);
-	}*/
-}

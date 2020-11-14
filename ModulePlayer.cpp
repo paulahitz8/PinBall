@@ -230,25 +230,27 @@ update_status ModulePlayer::Update()
 		propeller1Joint->EnableMotor(false);
 	}
 	
+	ball->GetPosition(ballPos.x, ballPos.y);
 
-	if (ballPos.y > 850)
+	if (ballPos.y > 940)
 	{
 		
 		if (lifeCount != 0)
 		{
+			
+			ball->body = nullptr;
 			delete ball;
-			//ball->body = nullptr;
 			ball = App->physics->CreateCircle(posInitial.x, posInitial.y, 15, b2_dynamicBody);
 			lifeCount--;
 		}
 		else
 		{
+			ball->body = nullptr;
+			delete ball;
 			isDead = true;
 			//gameover
 		}
 	}
-
-
 
 	SDL_Rect r1;
 	SDL_Rect r2;
@@ -280,5 +282,58 @@ update_status ModulePlayer::Update()
 	return UPDATE_CONTINUE;
 }
 
+void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
+{
+	int x, y;
+	int count = 0;
+	bool hasPassed1 = false;
+	bool hasPassed2 = false;
+	bool hasPassed3 = false;
+
+	if (bodyB == App->scene_intro->rectangle1S || bodyB == App->scene_intro->rectangle2S || bodyB == App->scene_intro->rectangle3S)
+	{
+		if (bodyB == App->scene_intro->rectangle1S) 
+		{ 
+			hasPassed1 = true;
+			//anim1 
+		} 
+		if (bodyB == App->scene_intro->rectangle2S)
+		{
+			hasPassed2 = true;
+			//anim2
+		} 
+		if (bodyB == App->scene_intro->rectangle3S)
+		{
+			hasPassed3 = true;
+			//anim3
+		} 
+	}
+
+	if (hasPassed1 == true && hasPassed2 == true && hasPassed3 == true)
+	{
+		//bonus
+		//sonido
+		hasPassed1 = false;
+		hasPassed2 = false;
+		hasPassed3 = false;
+		delete ball;
+	}
+
+
+	//App->audio->PlayFx(bonus_fx);
+
+	/*
+	if(bodyA)
+	{
+		bodyA->GetPosition(x, y);
+		App->renderer->DrawCircle(x, y, 50, 100, 100, 100);
+	}
+
+	if(bodyB)
+	{
+		bodyB->GetPosition(x, y);
+		App->renderer->DrawCircle(x, y, 50, 100, 100, 100);
+	}*/
+}
 
 
