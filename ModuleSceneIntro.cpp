@@ -35,7 +35,7 @@ bool ModuleSceneIntro::Start()
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
 
 	//Font
-	font = App->fonts->Load("pinball/Font.png", "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ123456789.:-+*/_!?0", 1);
+	font = App->fonts->Load("pinball/Fonts.png", "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ123456789.:-+*/_!?0", 6);
 
 	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
 

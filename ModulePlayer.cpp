@@ -188,21 +188,17 @@ update_status ModulePlayer::Update()
 	{
 		if (lifeCount != 0)
 		{
-			//vecInitial = PIXELS_TO_METERS(570);
 			b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
 
 			ball->body->SetTransform(startPos, ball->GetRotation());
-			//ball->body = nullptr;
-			//delete ball;
-			//ball = App->physics->CreateCircle(posInitial.x, posInitial.y, 15, b2_dynamicBody);
-			//ball->GetPosition(ballPos.x, ballPos.y);
 			lifeCount--;
 		}
 		else
 		{
-			//ball->body = nullptr;
-			//delete ball;
+
 			isDead = true;
+
+
 
 			//gameover
 		}
@@ -244,11 +240,6 @@ update_status ModulePlayer::PostUpdate() {
 
 	if (isDead == true) 
 	{
-		//alternativa
-		//App->logo->Enable();
-		//App->scene_intro->Disable();
-		//App->physics->Disable();
-		//App->player->Disable();
 	}
 
 	return UPDATE_CONTINUE;
@@ -285,8 +276,6 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		hasPassed1 = false;
 		hasPassed2 = false;
 		hasPassed3 = false;
-	
-		delete ball;
 
 	}
 
