@@ -276,6 +276,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		hasPassed1 = false;
 		hasPassed2 = false;
 		hasPassed3 = false;
+		App->scene_intro->score += 500;
 
 	}
 
