@@ -31,6 +31,7 @@ public:
 	uint bonusFx;
 
 	uint lifeCount = 1;
+	int timer = 0;
 
 	bool isFlippin;
 	bool isDead = false;
@@ -39,6 +40,7 @@ public:
 	bool hasPassed1 = false;
 	bool hasPassed2 = false;
 	bool hasPassed3 = false;
+	bool totalPass = false;
 
 	SDL_Texture* right1FlipperTex = nullptr;
 	SDL_Texture* right2FlipperTex = nullptr;

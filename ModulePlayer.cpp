@@ -32,6 +32,7 @@ bool ModulePlayer::Start()
 	right2FlipperTex = App->textures->Load("pinball/flipperuprightstraight.png");
 	leftFlipperTex = App->textures->Load("pinball/flipperdownleftstraight.png");
 	ballTex = App->textures->Load("pinball/ball.png");
+	sensorSprites = App->textures->Load("pinball/Sprites.png");
 
 	rec1Fx = App->audio->LoadFx("pinball/Sounds/rec1.ogg");
 	rec2Fx = App->audio->LoadFx("pinball/Sounds/rec2.ogg");
@@ -43,6 +44,7 @@ bool ModulePlayer::Start()
 	posInitial = { 570, 815 };
 	vecInitial = { 570, 815 };
 	ballPos = posInitial;
+	
 
 	currentEmergency1Animation = &blank;
 	currentEmergency2Animation = &blank;
@@ -220,6 +222,18 @@ update_status ModulePlayer::Update()
 		}
 	}
 
+	currentEmergency1Animation->Update();
+	currentEmergency2Animation->Update();
+	currentEmergency3Animation->Update();
+
+	SDL_Rect rectEmergency1 = currentEmergency1Animation->GetCurrentFrame();
+	SDL_Rect rectEmergency2 = currentEmergency2Animation->GetCurrentFrame();
+	SDL_Rect rectEmergency3 = currentEmergency3Animation->GetCurrentFrame();
+
+	App->renderer->Blit(sensorSprites, 237, 119, &rectEmergency1);
+	App->renderer->Blit(sensorSprites, 280, 119, &rectEmergency2);
+	App->renderer->Blit(sensorSprites, 325, 119, &rectEmergency3);
+
 	SDL_Rect r1;
 	SDL_Rect r2;
 	SDL_Rect r3;
@@ -246,17 +260,6 @@ update_status ModulePlayer::Update()
 	leftFlipper->GetPosition(pos.x, pos.y);
 	App->renderer->Blit(leftFlipperTex, pos.x, pos.y, &r3, 1.0f, leftFlipper->GetRotation());
 
-	currentEmergency1Animation->Update();
-	currentEmergency2Animation->Update();
-	currentEmergency3Animation->Update();
-
-	SDL_Rect rectEmergency1 = currentEmergency1Animation->GetCurrentFrame();
-	SDL_Rect rectEmergency2 = currentEmergency2Animation->GetCurrentFrame();
-	SDL_Rect rectEmergency3 = currentEmergency3Animation->GetCurrentFrame();
-
-	App->renderer->Blit(sensorSprites, 50, 50, &rectEmergency1);
-	App->renderer->Blit(sensorSprites, 70, 50, &rectEmergency2);
-	App->renderer->Blit(sensorSprites, 90, 50, &rectEmergency3);
 
 	return UPDATE_CONTINUE;
 }
@@ -276,50 +279,50 @@ update_status ModulePlayer::PostUpdate() {
 
 void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
-	int x, y;
-	int count = 0;
+	if (hasPassed1 == true && hasPassed2 == true && hasPassed3 == true)
+	{
+		totalPass = true;
+		//App->audio->PlayFx(bonusFx);
+		App->scene_intro->score += 500;
+		currentEmergency1Animation = &blank;
+		currentEmergency2Animation = &blank;
+		currentEmergency3Animation = &blank;
+		hasPassed1 = false;
+		hasPassed2 = false;
+		hasPassed3 = false;
+	}
 
-
-	if (bodyA == App->scene_intro->rectangle1S) 
-	{ 
-		if (hasPassed1 == false)
+	else if (bodyA == App->scene_intro->rectangle1S) 
+	{
+		if (hasPassed1 == false && totalPass == false)
 		{
 			App->audio->PlayFx(rec1Fx);
 			currentEmergency1Animation = &emergency;
 			hasPassed1 = true;
 		}
-	} 
+		totalPass = false;
+	}
 
-	if (bodyA == App->scene_intro->rectangle2S)
+	else if (bodyA == App->scene_intro->rectangle2S)
 	{
-		if (hasPassed2 == false)
+		if (hasPassed2 == false && totalPass == false)
 		{
 			App->audio->PlayFx(rec2Fx);
 			currentEmergency2Animation = &emergency;
 			hasPassed2 = true;
 		}
+		totalPass = false;
 	} 
-	if (bodyA == App->scene_intro->rectangle3S)
+	else if (bodyA == App->scene_intro->rectangle3S)
 	{
-		if (hasPassed3 == false)
+		if (hasPassed3 == false && totalPass == false)
 		{
 			App->audio->PlayFx(rec3Fx);
 			currentEmergency3Animation = &emergency;
 			hasPassed3 = true;
 		}
-	} 
-
-	if (hasPassed1 == true && hasPassed2 == true && hasPassed3 == true)
-	{
-		App->audio->PlayFx(bonusFx);
-		App->scene_intro->score += 500;
-		hasPassed1 = false;
-		hasPassed2 = false;
-		hasPassed3 = false;
-		currentEmergency1Animation = &blank;
-		currentEmergency2Animation = &blank;
-		currentEmergency3Animation = &blank;
-	}
+		totalPass = false;
+	} 	
 }
 
 
