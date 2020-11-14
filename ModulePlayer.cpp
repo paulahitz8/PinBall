@@ -21,7 +21,12 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	
+	blank.PushBack({ 600, 118, 29, 29 });
+
+	emergency.PushBack({ 479, 118, 29, 29 });
+
+	blue.PushBack({ 391, 196, 27, 27 });
+	blue.PushBack({ 600, 196, 27, 27 });
 
 	right1FlipperTex = App->textures->Load("pinball/flipperdownrightstraight.png");
 	right2FlipperTex = App->textures->Load("pinball/flipperuprightstraight.png");
@@ -31,6 +36,10 @@ bool ModulePlayer::Start()
 	posInitial = { 570, 815 };
 	vecInitial = { 570, 815 };
 	ballPos = posInitial;
+
+	currentEmergency1Animation = &blank;
+	currentEmergency2Animation = &blank;
+	currentEmergency3Animation = &blank;
 
 
 	ball = App->physics->CreateCircle(posInitial.x, posInitial.y, 15, b2_dynamicBody);

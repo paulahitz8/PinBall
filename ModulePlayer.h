@@ -3,6 +3,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "p2List.h"
+#include "Animation.h"
 
 #include "Box2D/Box2D/Box2D.h"
 
@@ -37,6 +38,7 @@ public:
 	SDL_Texture* right2FlipperTex = nullptr;
 	SDL_Texture* leftFlipperTex = nullptr;
 	SDL_Texture* ballTex = nullptr;
+	SDL_Texture* sensorSprites = nullptr;
 
 	iPoint posInitial;
 	b2Vec2 vecInitial;
@@ -68,4 +70,11 @@ public:
 	b2RevoluteJoint* right1FlipperJoint = nullptr;
 	b2RevoluteJoint* right2FlipperJoint = nullptr;
 	b2RevoluteJoint* leftFlipperJoint = nullptr;
+
+	Animation* currentEmergency1Animation = nullptr;
+	Animation* currentEmergency2Animation = nullptr;
+	Animation* currentEmergency3Animation = nullptr;
+	Animation blank;
+	Animation emergency;
+	Animation blue;
 };
