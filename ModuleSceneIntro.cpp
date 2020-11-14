@@ -212,7 +212,7 @@ update_status ModuleSceneIntro::Update()
 	sprintf_s(previousScoreText, 10, "%4d", previousScore);
 	sprintf_s(lifeText, 10, "%1d", App->player->lifeCount);
 
-	App->fonts->BlitText(400, 0, font, scoreText);
+	App->fonts->BlitText(550, 0, font, scoreText);
 	/*App->fonts->BlitText(0, 0, font, highScoreText);
 	App->fonts->BlitText(0, 0, font, previousScoreText);
 	App->fonts->BlitText(0, 0, font, lifeText);*/

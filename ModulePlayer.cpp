@@ -21,16 +21,32 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	
+	blank.PushBack({ 600, 118, 29, 29 });
+
+	emergency.PushBack({ 479, 118, 29, 29 });
+
+	blue.PushBack({ 391, 196, 27, 27 });
+	blue.PushBack({ 600, 196, 27, 27 });
 
 	right1FlipperTex = App->textures->Load("pinball/flipperdownrightstraight.png");
 	right2FlipperTex = App->textures->Load("pinball/flipperuprightstraight.png");
 	leftFlipperTex = App->textures->Load("pinball/flipperdownleftstraight.png");
 	ballTex = App->textures->Load("pinball/ball.png");
 
+	rec1Fx = App->audio->LoadFx("pinball/Sounds/rec1.ogg");
+	rec2Fx = App->audio->LoadFx("pinball/Sounds/rec2.ogg");
+	rec3Fx = App->audio->LoadFx("pinball/Sounds/rec3.ogg");
+	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper.ogg");
+	bonusFx = App->audio->LoadFx("pinball/Sounds/bonus.ogg");
+
+
 	posInitial = { 570, 815 };
 	vecInitial = { 570, 815 };
 	ballPos = posInitial;
+
+	currentEmergency1Animation = &blank;
+	currentEmergency2Animation = &blank;
+	currentEmergency3Animation = &blank;
 
 
 	ball = App->physics->CreateCircle(posInitial.x, posInitial.y, 15, b2_dynamicBody);
@@ -255,45 +271,42 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 	if (bodyA == App->scene_intro->rectangle1S) 
 	{ 
-		hasPassed1 = true;
-		//anim1 
+		if (hasPassed1 == false)
+		{
+			App->audio->PlayFx(rec1Fx);
+			//anim1 
+			hasPassed1 = true;
+		}
 	} 
+
 	if (bodyA == App->scene_intro->rectangle2S)
 	{
-		hasPassed2 = true;
-		//anim2
+		if (hasPassed2 == false)
+		{
+			App->audio->PlayFx(rec2Fx);
+			//anim1 
+			hasPassed2 = true;
+		}
 	} 
 	if (bodyA == App->scene_intro->rectangle3S)
 	{
-		hasPassed3 = true;
-		//anim3
+		if (hasPassed3 == false)
+		{
+			App->audio->PlayFx(rec3Fx);
+			//anim1 
+			hasPassed3 = true;
+		}
 	} 
 
 	if (hasPassed1 == true && hasPassed2 == true && hasPassed3 == true)
 	{
-		//bonus
-		//sonido
+		App->audio->PlayFx(bonusFx);
+		App->scene_intro->score += 500;
 		hasPassed1 = false;
 		hasPassed2 = false;
 		hasPassed3 = false;
-
+		//image goes back to normal
 	}
-
-
-	//App->audio->PlayFx(bonus_fx);
-
-	/*
-	if(bodyA)
-	{
-		bodyA->GetPosition(x, y);
-		App->renderer->DrawCircle(x, y, 50, 100, 100, 100);
-	}
-
-	if(bodyB)
-	{
-		bodyB->GetPosition(x, y);
-		App->renderer->DrawCircle(x, y, 50, 100, 100, 100);
-	}*/
 }
 
 
