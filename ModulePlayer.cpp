@@ -201,13 +201,12 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if ((ballPos.x > 175 && ballPos.x < 201) && (ballPos.y > 428 && ballPos.y < 419))
-	{
-		App->physics->isActive = !App->physics->isActive;
-	}
+	//if ((ballPos.x > 175 && ballPos.x < 201) && (ballPos.y > 428 && ballPos.y < 419))
+	//{
+	//	App->physics->isActive = !App->physics->isActive;
+	//}
 
-		/*waterEntrance1S = App->physics->CreateRectangleSensor(175, 428, 26, 9);
-	waterEntrance2S = App->physics->CreateRectangleSensor(457, 645, 27, 11);*/
+	
 	SDL_Rect r1;
 	SDL_Rect r2;
 	SDL_Rect r3;
