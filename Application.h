@@ -13,7 +13,7 @@ class ModulePlayer;
 class ModuleSceneIntro;
 class ModulePhysics;
 class ModuleFonts;
-//class FadeScreen;
+class FadeScreen;
 class LogoScreen;
 class IntroScreen;
 
@@ -29,9 +29,9 @@ public:
 	ModuleSceneIntro* scene_intro;
 	ModulePhysics* physics;
 	ModuleFonts* fonts;
-	//FadeScreen* fade;
-	ModuleFonts* intro;
-	ModuleFonts* logo;
+	FadeScreen* fade;
+	IntroScreen* intro;
+	LogoScreen* logo;
 	
 
 private:

@@ -10,7 +10,7 @@
 #include "ModuleSceneIntro.h"
 #include "ModuleSceneIntro.h"
 #include "ModuleFonts.h"
-//#include "FadeScreen.h"
+#include "FadeScreen.h"
 #include "LogoScreen.h"
 #include "IntroScreen.h"
 
@@ -28,7 +28,7 @@ Application::Application()
 	scene_intro = new ModuleSceneIntro(this);
 	physics = new ModulePhysics(this);
 	fonts = new ModuleFonts(this);
-	//fade = new FadeScreen(this);
+	fade = new FadeScreen(this);
 	logo = new LogoScreen(this);
 	intro = new IntroScreen(this);
 
@@ -44,7 +44,9 @@ Application::Application()
 	AddModule(input);
 	AddModule(audio);
 	AddModule(fonts);
-	//AddModule(fade);
+	AddModule(fade);
+	AddModule(logo);
+	AddModule(intro);
 	
 	// Scenes
 	AddModule(scene_intro);
