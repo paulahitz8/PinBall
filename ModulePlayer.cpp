@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 #include "ModuleSceneIntro.h"
+#include "LogoScreen.h"
 #include "Box2D/Box2D/Box2D.h"
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -28,6 +29,7 @@ bool ModulePlayer::Start()
 	ballTex = App->textures->Load("pinball/ball.png");
 
 	posInitial = { 570, 815 };
+	vecInitial = { 570, 815 };
 	ballPos = posInitial;
 
 
@@ -118,6 +120,8 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(right2FlipperTex);
 	App->textures->Unload(leftFlipperTex);
 
+	delete ball;
+
 	return true;
 }
 
@@ -180,33 +184,30 @@ update_status ModulePlayer::Update()
 		isFlippin = false;
 	}
 
-	ball->GetPosition(ballPos.x, ballPos.y);
-
-	if (ballPos.y > 940)
+	if (ballPos.y > 920)
 	{
 		if (lifeCount != 0)
 		{
-			
-			ball->body = nullptr;
-			delete ball;
-			ball = App->physics->CreateCircle(posInitial.x, posInitial.y, 15, b2_dynamicBody);
+			//vecInitial = PIXELS_TO_METERS(570);
+			b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
+
+			ball->body->SetTransform(startPos, ball->GetRotation());
+			//ball->body = nullptr;
+			//delete ball;
+			//ball = App->physics->CreateCircle(posInitial.x, posInitial.y, 15, b2_dynamicBody);
+			//ball->GetPosition(ballPos.x, ballPos.y);
 			lifeCount--;
 		}
 		else
 		{
-			ball->body = nullptr;
-			delete ball;
+			//ball->body = nullptr;
+			//delete ball;
 			isDead = true;
+
 			//gameover
 		}
 	}
 
-	//if ((ballPos.x > 175 && ballPos.x < 201) && (ballPos.y > 428 && ballPos.y < 419))
-	//{
-	//	App->physics->isActive = !App->physics->isActive;
-	//}
-
-	
 	SDL_Rect r1;
 	SDL_Rect r2;
 	SDL_Rect r3;
@@ -237,32 +238,45 @@ update_status ModulePlayer::Update()
 	return UPDATE_CONTINUE;
 }
 
+
+
+update_status ModulePlayer::PostUpdate() {
+
+	if (isDead == true) 
+	{
+		//alternativa
+		//App->logo->Enable();
+		//App->scene_intro->Disable();
+		//App->physics->Disable();
+		//App->player->Disable();
+	}
+
+	return UPDATE_CONTINUE;
+
+}
+
+
 void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
 	int x, y;
 	int count = 0;
-	bool hasPassed1 = false;
-	bool hasPassed2 = false;
-	bool hasPassed3 = false;
 
-	if (bodyB == App->scene_intro->rectangle1S || bodyB == App->scene_intro->rectangle2S || bodyB == App->scene_intro->rectangle3S)
+
+	if (bodyA == App->scene_intro->rectangle1S) 
+	{ 
+		hasPassed1 = true;
+		//anim1 
+	} 
+	if (bodyA == App->scene_intro->rectangle2S)
 	{
-		if (bodyB == App->scene_intro->rectangle1S) 
-		{ 
-			hasPassed1 = true;
-			//anim1 
-		} 
-		if (bodyB == App->scene_intro->rectangle2S)
-		{
-			hasPassed2 = true;
-			//anim2
-		} 
-		if (bodyB == App->scene_intro->rectangle3S)
-		{
-			hasPassed3 = true;
-			//anim3
-		} 
-	}
+		hasPassed2 = true;
+		//anim2
+	} 
+	if (bodyA == App->scene_intro->rectangle3S)
+	{
+		hasPassed3 = true;
+		//anim3
+	} 
 
 	if (hasPassed1 == true && hasPassed2 == true && hasPassed3 == true)
 	{
@@ -271,7 +285,9 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		hasPassed1 = false;
 		hasPassed2 = false;
 		hasPassed3 = false;
+	
 		delete ball;
+
 	}
 
 

@@ -4,12 +4,13 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
+#include "ModulePhysics.h"
 //#include "ModuleWindow.h"
 #include "FadeScreen.h"
 #include "LogoScreen.h"
 #include "IntroScreen.h"
-//#include "ModuleSceneIntro.h"
-//#include "ModulePlayer.h"
+#include "ModuleSceneIntro.h"
+#include "ModulePlayer.h"
 
 
 
@@ -37,6 +38,9 @@ update_status IntroScreen::Update()
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_intro, 50.0f);
+		App->player->Enable();
+		//App->physics->Enable();
+		App->scene_intro->Enable();
 		
 	}
 

@@ -21,6 +21,7 @@ LogoScreen::~LogoScreen() {}
 bool LogoScreen::Start()
 {
 	bool ret = true;
+	timer = 0;
 
 	logoScreen = App->textures->Load("pinball/LogoScreen2.png");
 
@@ -47,7 +48,7 @@ update_status LogoScreen::Update()
 
 update_status LogoScreen::PostUpdate()
 {
-
+	//(Module * moduleToDisable, Module * moduleToEnable, float frames)
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_UP) { return UPDATE_STOP; }
 
 	if (timer == 190)
