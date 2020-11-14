@@ -7,6 +7,7 @@
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
 #include "ModuleFonts.h"
+#include "ModulePlayer.h"
 
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -35,7 +36,10 @@ bool ModuleSceneIntro::Start()
 	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
 
 	//Font
-	font = App->fonts->Load("pinball/Fonts.png", "ABCDEFGHIJKLMNOPQRSTUVWXYZÑ123456789.:-+*/_!?0", 6);
+	font = App->fonts->Load("pinball/fontwhite.png", "0123456789", 1);
+	previousScore = 0;
+	score = 69;
+	highScore = 0;
 
 	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
 
@@ -202,6 +206,16 @@ update_status ModuleSceneIntro::Update()
 		if(normal.x != 0.0f)
 			App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
 	}
+
+	sprintf_s(scoreText, 10, "%4d", score);
+	sprintf_s(highScoreText, 10, "%4d", highScore);
+	sprintf_s(previousScoreText, 10, "%4d", previousScore);
+	sprintf_s(lifeText, 10, "%1d", App->player->lifeCount);
+
+	App->fonts->BlitText(400, 0, font, scoreText);
+	/*App->fonts->BlitText(0, 0, font, highScoreText);
+	App->fonts->BlitText(0, 0, font, previousScoreText);
+	App->fonts->BlitText(0, 0, font, lifeText);*/
 
 	return UPDATE_CONTINUE;
 }
