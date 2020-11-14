@@ -44,13 +44,13 @@ bool ModuleSceneIntro::Start()
 	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
 
 	//Creating sensors
-	ball1S = App->physics->CreateRectangleSensor(295, 192, 61, 58);
+	ball1S = App->physics->CreateRectangleSensor(326, 219, 61, 58);
 	ball1S->listener = (Module*)App->player;
 
-	ball2S = App->physics->CreateRectangleSensor(213, 224, 61, 60);
+	ball2S = App->physics->CreateRectangleSensor(244, 251, 61, 60);
 	ball2S->listener = (Module*)App->player;
 
-	ball3S = App->physics->CreateRectangleSensor(306, 276, 62, 52);
+	ball3S = App->physics->CreateRectangleSensor(340, 302, 62, 52);
 	ball3S->listener = (Module*)App->player;
 
 	rectangle1S = App->physics->CreateRectangleSensor(246, 129, 8, 9);
