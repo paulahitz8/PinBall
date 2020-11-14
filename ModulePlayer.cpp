@@ -288,6 +288,7 @@ update_status ModulePlayer::PostUpdate() {
 
 void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
+
 	if (hasPassed1 == true && hasPassed2 == true && hasPassed3 == true)
 	{
 		totalPass = true;
@@ -329,7 +330,20 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			currentEmergency3Animation = &emergency;
 			hasPassed3 = true;
 		}
-	} 	
+	} 
+
+	if (bodyA == App->scene_intro->ball1S || bodyA == App->scene_intro->ball2S || bodyA == App->scene_intro->ball3S)
+	{
+		if (isTouchingBalls == false)
+		{
+			isTouchingBalls = true;
+			App->scene_intro->score += 15;
+		}
+	}
+	else 
+	{
+		isTouchingBalls = false;
+	}
 }
 
 
