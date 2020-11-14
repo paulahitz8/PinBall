@@ -62,10 +62,40 @@ bool ModuleSceneIntro::Start()
 	rectangle3S = App->physics->CreateRectangleSensor(335, 131, 8, 9);
 	rectangle3S->listener = (Module*)App->player;
 
-	waterEntrance1S = App->physics->CreateRectangleSensor(175, 428, 26, 9);
+	blue1S = App->physics->CreateRectangleSensor(318, 369, 5, 5);
+	blue1S->listener = (Module*)App->player;
+
+	blue2S = App->physics->CreateRectangleSensor(346, 360, 5, 5);
+	blue2S->listener = (Module*)App->player;
+
+	blue3S = App->physics->CreateRectangleSensor(376, 351, 5, 5);
+	blue3S->listener = (Module*)App->player;
+
+	blue4S = App->physics->CreateRectangleSensor(459, 425, 5, 5);
+	blue4S->listener = (Module*)App->player;
+
+	blue5S = App->physics->CreateRectangleSensor(459, 455, 5, 5);
+	blue5S->listener = (Module*)App->player;
+
+	blue6S = App->physics->CreateRectangleSensor(459, 486, 5, 5);
+	blue6S->listener = (Module*)App->player;
+
+	blue7S = App->physics->CreateRectangleSensor(72, 701, 5, 5);
+	blue7S->listener = (Module*)App->player;
+
+	blue8S = App->physics->CreateRectangleSensor(515, 701, 5, 5);
+	blue8S->listener = (Module*)App->player;
+
+	telS = App->physics->CreateRectangleSensor(410, 455, 39, 33);
+	telS->listener = (Module*)App->player;
+
+	greenHoleS = App->physics->CreateRectangleSensor(125, 137, 12, 13);
+	greenHoleS->listener = (Module*)App->player;
+
+	waterEntrance1S = App->physics->CreateRectangleSensor(180, 428, 26, 9);
 	waterEntrance1S->listener = (Module*)App->player;
 
-	waterEntrance2S = App->physics->CreateRectangleSensor(457, 645, 27, 11);
+	waterEntrance2S = App->physics->CreateRectangleSensor(467, 645, 27, 11);
 	waterEntrance2S->listener = (Module*)App->player;
 
 	

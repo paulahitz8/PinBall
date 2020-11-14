@@ -42,6 +42,16 @@ public:
 	PhysBody* rectangle1S = nullptr;
 	PhysBody* rectangle2S = nullptr;
 	PhysBody* rectangle3S = nullptr;
+	PhysBody* blue1S = nullptr;
+	PhysBody* blue2S = nullptr;
+	PhysBody* blue3S = nullptr;
+	PhysBody* blue4S = nullptr;
+	PhysBody* blue5S = nullptr;
+	PhysBody* blue6S = nullptr;
+	PhysBody* blue7S = nullptr;
+	PhysBody* blue8S = nullptr;
+	PhysBody* telS = nullptr;
+	PhysBody* greenHoleS = nullptr;
 	PhysBody* waterEntrance1S = nullptr;
 	PhysBody* waterEntrance2S = nullptr;
 
