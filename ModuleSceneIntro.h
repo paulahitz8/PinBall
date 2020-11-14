@@ -46,12 +46,14 @@ public:
 	PhysBody* waterEntrance2S = nullptr;
 
 	int font = -1;
-	int score = 0;
-	int highScore = 0;
-	int previousScore = 0;
+	int score;
+	int highScore;
+	int previousScore;
 
-	char scoreText[16] = { "\0" };
-	char highScoreText[16] = { "\0" };
-	char previousScoreText[16] = { "\0" };
+	char scoreText[10] = { "\0" };
+	char highScoreText[10] = { "\0" };
+	char previousScoreText[10] = { "\0" };
+	char lifeText[10] = { "\0" };
+
 
 };
