@@ -22,7 +22,7 @@ bool LogoScreen::Start()
 {
 	bool ret = true;
 
-	logoScreen = App->textures->Load("pinball/LogoScreen.png");
+	logoScreen = App->textures->Load("pinball/LogoScreen2.png");
 
 	//App->audio->PlayMusic("Assets/audio/music/LogoScreenMusic.ogg");
 

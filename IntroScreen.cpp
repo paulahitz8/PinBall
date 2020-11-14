@@ -24,7 +24,7 @@ bool IntroScreen::Start()
 
 	//app->audio->PlayMusic("Assets/audio/music/TitleScreenMusic.ogg");
 
-	introScreen = App->textures->Load("pinball/LogoScreen.png");
+	introScreen = App->textures->Load("pinball/IntroScreen.png");
 
 	return ret;
 }
@@ -36,8 +36,8 @@ update_status IntroScreen::Update()
 	
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
-	/*	app->fadeScreen->active = true;
-		app->fadeScreen->FadeToBlack(this, (Module*)app->scene, 50.0f);*/
+		App->fade->FadeToBlack(this, (Module*)App->scene_intro, 50.0f);
+		
 	}
 
 	return UPDATE_CONTINUE;
