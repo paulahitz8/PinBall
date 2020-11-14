@@ -246,6 +246,17 @@ update_status ModulePlayer::Update()
 	leftFlipper->GetPosition(pos.x, pos.y);
 	App->renderer->Blit(leftFlipperTex, pos.x, pos.y, &r3, 1.0f, leftFlipper->GetRotation());
 
+	currentEmergency1Animation->Update();
+	currentEmergency2Animation->Update();
+	currentEmergency3Animation->Update();
+
+	SDL_Rect rectEmergency1 = currentEmergency1Animation->GetCurrentFrame();
+	SDL_Rect rectEmergency2 = currentEmergency2Animation->GetCurrentFrame();
+	SDL_Rect rectEmergency3 = currentEmergency3Animation->GetCurrentFrame();
+
+	App->renderer->Blit(sensorSprites, 50, 50, &rectEmergency1);
+	App->renderer->Blit(sensorSprites, 70, 50, &rectEmergency2);
+	App->renderer->Blit(sensorSprites, 90, 50, &rectEmergency3);
 
 	return UPDATE_CONTINUE;
 }
@@ -274,7 +285,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		if (hasPassed1 == false)
 		{
 			App->audio->PlayFx(rec1Fx);
-			//anim1 
+			currentEmergency1Animation = &emergency;
 			hasPassed1 = true;
 		}
 	} 
@@ -284,7 +295,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		if (hasPassed2 == false)
 		{
 			App->audio->PlayFx(rec2Fx);
-			//anim1 
+			currentEmergency2Animation = &emergency;
 			hasPassed2 = true;
 		}
 	} 
@@ -293,7 +304,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		if (hasPassed3 == false)
 		{
 			App->audio->PlayFx(rec3Fx);
-			//anim1 
+			currentEmergency3Animation = &emergency;
 			hasPassed3 = true;
 		}
 	} 
@@ -305,7 +316,9 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		hasPassed1 = false;
 		hasPassed2 = false;
 		hasPassed3 = false;
-		//image goes back to normal
+		currentEmergency1Animation = &blank;
+		currentEmergency2Animation = &blank;
+		currentEmergency3Animation = &blank;
 	}
 }
 
