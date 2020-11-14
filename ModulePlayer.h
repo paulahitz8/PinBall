@@ -17,16 +17,21 @@ public:
 
 	bool Start();
 	update_status Update();
+	update_status PostUpdate();
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
 public:
 
-	uint lifeCount = 3;
+	uint lifeCount = 1;
 
 	bool isFlippin;
 	bool isDead = false;
 	bool waterSlide = false;
+
+	bool hasPassed1 = false;
+	bool hasPassed2 = false;
+	bool hasPassed3 = false;
 
 	SDL_Texture* right1FlipperTex = nullptr;
 	SDL_Texture* right2FlipperTex = nullptr;
@@ -34,6 +39,7 @@ public:
 	SDL_Texture* ballTex = nullptr;
 
 	iPoint posInitial;
+	b2Vec2 vecInitial;
 	iPoint pos;
 	iPoint ballPos;
 
