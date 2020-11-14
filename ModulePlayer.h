@@ -24,6 +24,12 @@ public:
 
 public:
 
+	uint rec1Fx;
+	uint rec2Fx;
+	uint rec3Fx;
+	uint flipperFx;
+	uint bonusFx;
+
 	uint lifeCount = 1;
 
 	bool isFlippin;
