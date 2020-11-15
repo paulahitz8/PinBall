@@ -20,4 +20,5 @@ public:
 private:
 
 	SDL_Texture* endScreen;
+	uint endFx = 0;
 };

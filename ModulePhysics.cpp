@@ -345,7 +345,7 @@ int waterwall1[96] = {
 	182, 472
 };
 
-int waterwall2[102] = {
+int waterwall2[106] = {
 	153, 339,
 	89, 229,
 	48, 155,
@@ -396,7 +396,9 @@ int waterwall2[102] = {
 	51, 82,
 	46, 124,
 	57, 158,
-	215, 426
+	215, 426,
+	209, 431,
+	165, 359
 };
 
 
@@ -459,7 +461,7 @@ bool ModulePhysics::Start()
 	CreateChain(0, 0, circle2, 24, b2_staticBody, 0, true);
 	CreateChain(0, 0, circle3, 20, b2_staticBody, 0, true);
 	CreateChain(0, 0, waterwall1, 96, b2_staticBody, 0, false);
-	CreateChain(0, 0, waterwall2, 104, b2_staticBody, 0, false);
+	CreateChain(0, 0, waterwall2, 106, b2_staticBody, 0, false);
 
 	return true;
 }
@@ -667,7 +669,7 @@ update_status ModulePhysics::PostUpdate()
 					}
 
 					v = b->GetWorldPoint(shape->m_vertices[0]);
-					if(isActive == true) App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
+					App->renderer->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
 				}
 				break;
 

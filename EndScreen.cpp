@@ -27,7 +27,8 @@ bool EndScreen::Start()
 	App->player->lifeCount = 3;
 
 	endScreen = App->textures->Load("pinball/gameoverScreen.png");
-
+	endFx = App->audio->LoadFx("pinball/Sounds/gameOver.wav");
+	//App->audio->PlayFx(endFx);
 	return ret;
 }
 
