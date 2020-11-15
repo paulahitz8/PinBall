@@ -1,29 +1,28 @@
-# FIREFIGHTER PINBALL
+# Firefighter Pinball
  
-Description.
+Welcome to our representation of the game Firefighter Pinball we made for the subject Physics II in CITM.
+We hope you enjoy it!
 
-## Team Members
+## Developers
 
 **Irene Hernández**
 * Github: [ihedud](https://github.com/ihedud)
-* Tasks:
 
 **María Calle**
 * Github: [mav006](https://github.com/mav006)
-* Tasks:
 
 **Paula Hitz**
 * Github: [paulahitz8](https://github.com/paulahitz8)
-* Tasks:
-
-## Debug
-
-- F1 Show colliders/sensors
 
 ## Controls
 
 - Down arrow to use propeller
 - Left and right arrows for flippers
+- Enter key to continue
+
+## Debug
+
+- F1 Show colliders/sensors
 
 ## Original Game
 
