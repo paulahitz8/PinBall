@@ -28,7 +28,7 @@ We hope you enjoy it!
 ## Debug
 
 - F1 to show colliders/sensors + mouse joint
-- Extra: Press "5" tp add a ball at the location of the mouse
+- Extra: Press "5" to add a ball at the location of the mouse
 
 ## Original Game
 
