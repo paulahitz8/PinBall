@@ -48,7 +48,7 @@ bool ModulePlayer::Start()
 	bonusFx = App->audio->LoadFx("pinball/Sounds/bonus.ogg");
 
 
-	posInitial = { 570, 820 };
+	posInitial = { 570, 800 };
 	vecInitial = { 570, 815 };
 	ballPos = posInitial;
 	
