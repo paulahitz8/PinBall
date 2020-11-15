@@ -1,20 +1,17 @@
 # FIREFIGHTER PINBALL
  
-Description.
+Welcome to our representation of the game Firefighter Pinball! We hope you enjoy it. 
 
 ## Team Members
 
 **Irene Hernández**
 * Github: [ihedud](https://github.com/ihedud)
-* Tasks:
 
 **María Calle**
 * Github: [mav006](https://github.com/mav006)
-* Tasks:
 
 **Paula Hitz**
 * Github: [paulahitz8](https://github.com/paulahitz8)
-* Tasks:
 
 ## Debug
 
