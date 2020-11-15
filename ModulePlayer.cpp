@@ -44,10 +44,10 @@ bool ModulePlayer::Start()
 	rec2Fx = App->audio->LoadFx("pinball/Sounds/rec2.ogg");
 	rec3Fx = App->audio->LoadFx("pinball/Sounds/rec3.ogg");
 	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper.wav");
-	ballSpawn = App->audio->LoadFx("pinball/Sounds/respawn.ogg");
+	ballSpawn = App->audio->LoadFx("pinball/Sounds/respawn.wav");
 	bonusFx = App->audio->LoadFx("pinball/Sounds/bonus.ogg");
-	boingFx = App->audio->LoadFx("pinball/Sounds/boing.ogg");
-	ringFx = App->audio->LoadFx("pinball/Sounds/ring.ogg");
+	boingFx = App->audio->LoadFx("pinball/Sounds/boing.wav");
+	ringFx = App->audio->LoadFx("pinball/Sounds/ring2.wav");
 
 
 	posInitial = { 570, 820 };
