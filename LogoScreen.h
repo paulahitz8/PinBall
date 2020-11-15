@@ -1,7 +1,5 @@
 #pragma once
 #include "Module.h"
-//#include "Globals.h"
-//#include "Box2D/Box2D/Box2D.h"
 
 struct SDL_Texture;
 

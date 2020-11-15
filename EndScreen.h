@@ -20,5 +20,4 @@ public:
 private:
 
 	SDL_Texture* endScreen;
-	/*SDL_Rect rect;*/
 };

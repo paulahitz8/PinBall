@@ -6,7 +6,6 @@
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
 #include "ModulePhysics.h"
-//#include "ModuleWindow.h"
 #include "FadeScreen.h"
 #include "LogoScreen.h"
 #include "IntroScreen.h"
@@ -27,10 +26,6 @@ bool EndScreen::Start()
 	isActive = true;
 	App->player->lifeCount = 3;
 
-
-
-	//app->audio->PlayMusic("Assets/audio/music/TitleScreenMusic.ogg");
-
 	endScreen = App->textures->Load("pinball/gameoverScreen.png");
 
 	return ret;
@@ -43,9 +38,8 @@ update_status EndScreen::Update()
 
 	
 	App->renderer->Blit(endScreen, 0, 0, &rect);
-
-
 	
+	//Scores
 	if (App->scene_intro->score > App->scene_intro->previousScore && App->scene_intro->score > App->scene_intro->highScore)
 	{
 		App->scene_intro->highScore = App->scene_intro->score;
@@ -54,9 +48,9 @@ update_status EndScreen::Update()
 	{
 		App->scene_intro->highScore = App->scene_intro->previousScore;
 	}
+
 	App->scene_intro->previousScore = App->scene_intro->score;
 
-	//Scores
 	App->fonts->BlitText(382, 685, App->scene_intro->fontblack, App->scene_intro->scoreText);
 	App->fonts->BlitText(382, 879, App->scene_intro->fontblack, App->scene_intro->highScoreText);
 	App->fonts->BlitText(382, 793, App->scene_intro->fontblack, App->scene_intro->previousScoreText);
@@ -91,4 +85,3 @@ bool EndScreen::CleanUp()
 
 	return true;
 }
-

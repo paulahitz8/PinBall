@@ -5,7 +5,6 @@
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
 #include "ModulePhysics.h"
-//#include "ModuleWindow.h"
 #include "FadeScreen.h"
 #include "LogoScreen.h"
 #include "IntroScreen.h"
@@ -22,8 +21,6 @@ IntroScreen::~IntroScreen() {}
 bool IntroScreen::Start()
 {
 	bool ret = true;
-
-	//app->audio->PlayMusic("Assets/audio/music/TitleScreenMusic.ogg");
 
 	introScreen = App->textures->Load("pinball/IntroScreen.png");
 
