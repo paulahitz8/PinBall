@@ -96,12 +96,6 @@ bool ModuleSceneIntro::Start()
 	greenHoleS = App->physics->CreateRectangleSensor(125, 137, 12, 13);
 	greenHoleS->listener = (Module*)App->player;
 
-	waterEntrance1S = App->physics->CreateRectangleSensor(180, 428, 26, 9);
-	waterEntrance1S->listener = (Module*)App->player;
-
-	waterEntrance2S = App->physics->CreateRectangleSensor(467, 645, 27, 11);
-	waterEntrance2S->listener = (Module*)App->player;
-
 	App->player->lifeCount = 3;
 
 	return ret;
