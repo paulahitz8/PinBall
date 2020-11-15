@@ -22,12 +22,13 @@ We hope you enjoy it!
 
 ## Mechanics
 
-- Combo 1:
-- Combo 2:
+- Combo 1: Activate all blue circles for extra points (500 pts)
+- Combo 2: Activate the three red symbols at the top for extra points (500 pts)
 
 ## Debug
 
-- F1 Show colliders/sensors
+- F1 to show colliders/sensors + mouse joint
+- Extra: Press "5" tp add a ball at the location of the mouse
 
 ## Original Game
 
