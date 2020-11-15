@@ -45,4 +45,4 @@ Link to the source: https://github.com/paulahitz8/PinBall
 - We added a score and lives
 - We deleted the water tube
 
-Disclaimer: we did not find the original sound files, we could not separate sound effects from the background music. In order to grab all of the animation sprites we would have to take screenshots every milisecond. 
+Disclaimer: we did not find the original sound files, we could not separate sound effects from the background music. We cannot grab animations since the original game zooms in and moves the camera constantly. 
