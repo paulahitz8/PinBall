@@ -163,7 +163,9 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 
-	if (App->end->isActive == false) {
+	if (App->end->isActive == false) 
+	{
+
 		if (totalPass == true)
 		{
 			timer++;
@@ -173,6 +175,27 @@ update_status ModulePlayer::Update()
 				timer = 0;
 			}
 		}
+
+		if (totalPassB == true)
+		{
+			timerB++;
+			if (timerB == 20)
+			{
+				totalPassB = false;
+				timerB = 0;
+			}
+		}
+
+		if (ringRang == true)
+		{
+			timerR++;
+			if (timerR == 50)
+			{
+				ringRang = false;
+				timerR = 0;
+			}
+		}
+
 
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
 			propeller1Joint->EnableMotor(true);
@@ -400,49 +423,109 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		isTouchingBalls = false;
 	}
 
+	if (hasPassedB1 == true && hasPassedB2 == true && hasPassedB3 == true && hasPassedB4 == true && hasPassedB5 == true && hasPassedB6 == true && hasPassedB7 == true && hasPassedB8 == true)
+	{
+		totalPassB = true;
+		//App->audio->PlayFx(bonusFx);
+		App->scene_intro->score += 500;
+		currentBlue1Animation = &blank;
+		currentBlue2Animation = &blank;
+		currentBlue3Animation = &blank;
+		currentBlue4Animation = &blank;
+		currentBlue5Animation = &blank;
+		currentBlue6Animation = &blank;
+		currentBlue7Animation = &blank;
+		currentBlue8Animation = &blank;
+		hasPassedB1 = false;
+		hasPassedB2 = false;
+		hasPassedB3 = false;
+		hasPassedB4 = false;
+		hasPassedB5 = false;
+		hasPassedB6 = false;
+		hasPassedB7 = false;
+		hasPassedB8 = false;
+	}
+
 	if (bodyA == App->scene_intro->blue1S)
 	{
-		currentBlue1Animation = &blue;
+		if (hasPassedB1 == false && totalPassB == false)
+		{
+			currentBlue1Animation = &blue;
+			hasPassedB1 = true;
+		}
 	}
 
 	if (bodyA == App->scene_intro->blue2S)
 	{
-		currentBlue2Animation = &blue;
+		if (hasPassedB2 == false && totalPassB == false)
+		{
+			currentBlue2Animation = &blue;
+			hasPassedB2 = true;
+		}
 	}
 
 	if (bodyA == App->scene_intro->blue3S)
 	{
-		currentBlue3Animation = &blue;
+		if (hasPassedB3 == false && totalPassB == false)
+		{
+			currentBlue3Animation = &blue;
+			hasPassedB3 = true;
+		}
 	}
 
 	if (bodyA == App->scene_intro->blue4S)
 	{
-		currentBlue4Animation = &blue;
+		if (hasPassedB4 == false && totalPassB == false)
+		{
+			currentBlue4Animation = &blue;
+			hasPassedB4 = true;
+		}
 	}
 
 	if (bodyA == App->scene_intro->blue5S)
 	{
-		currentBlue5Animation = &blue;
+		if (hasPassedB5 == false && totalPassB == false)
+		{
+			currentBlue5Animation = &blue;
+			hasPassedB5 = true;
+		}
 	}
 
 	if (bodyA == App->scene_intro->blue6S)
 	{
-		currentBlue6Animation = &blue;
+		if (hasPassedB6 == false && totalPassB == false)
+		{
+			currentBlue6Animation = &blue;
+			hasPassedB6 = true;
+		}
 	}
 
 	if (bodyA == App->scene_intro->blue7S)
 	{
-		currentBlue7Animation = &blue;
+		if (hasPassedB7 == false && totalPassB == false)
+		{
+			currentBlue7Animation = &blue;
+			hasPassedB7 = true;
+		}
 	}
 
 	if (bodyA == App->scene_intro->blue8S)
 	{
-		currentBlue8Animation = &blue;
+		if (hasPassedB8 == false && totalPassB == false)
+		{
+			currentBlue8Animation = &blue;
+			hasPassedB8 = true;
+		}
 	}
 
 	if (bodyA == App->scene_intro->telS)
 	{
-		currentTelAnimation = &tel;
+		if (ringRang == false)
+		{
+			App->scene_intro->score += 20;
+			currentTelAnimation = &tel;
+			ringRang = true;
+		}
 	}
 
 }

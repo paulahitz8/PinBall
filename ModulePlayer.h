@@ -32,6 +32,8 @@ public:
 
 	uint lifeCount = 3;
 	int timer = 0;
+	int timerB = 0;
+	int timerR = 0;
 
 	bool isFlippin;
 	bool isDead = false;
@@ -42,6 +44,16 @@ public:
 	bool hasPassed3 = false;
 	bool totalPass = false;
 	bool isTouchingBalls = false;
+	bool hasPassedB1 = false;
+	bool hasPassedB2 = false;
+	bool hasPassedB3 = false;
+	bool hasPassedB4 = false;
+	bool hasPassedB5 = false;
+	bool hasPassedB6 = false;
+	bool hasPassedB7 = false;
+	bool hasPassedB8 = false;
+	bool totalPassB = false;
+	bool ringRang = false;
 
 	SDL_Texture* right1FlipperTex = nullptr;
 	SDL_Texture* right2FlipperTex = nullptr;
