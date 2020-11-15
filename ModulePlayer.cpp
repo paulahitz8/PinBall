@@ -27,6 +27,11 @@ bool ModulePlayer::Start()
 
 	blue.PushBack({ 391, 196, 27, 27 });
 	blue.PushBack({ 600, 196, 27, 27 });
+	blue.speed = 0.02f;
+
+	tel.PushBack({ 622, 429, 73, 61 });
+	tel.PushBack({ 600, 196, 27, 27 });
+	tel.speed = 0.02f;
 
 	right1FlipperTex = App->textures->Load("pinball/flipperdownrightstraight.png");
 	right2FlipperTex = App->textures->Load("pinball/flipperuprightstraight.png");
@@ -49,6 +54,15 @@ bool ModulePlayer::Start()
 	currentEmergency1Animation = &blank;
 	currentEmergency2Animation = &blank;
 	currentEmergency3Animation = &blank;
+	currentBlue1Animation = &blank;
+	currentBlue2Animation = &blank;
+	currentBlue3Animation = &blank;
+	currentBlue4Animation = &blank;
+	currentBlue5Animation = &blank;
+	currentBlue6Animation = &blank;
+	currentBlue7Animation = &blank;
+	currentBlue8Animation = &blank;
+	currentTelAnimation = &blank;
 
 
 	ball = App->physics->CreateCircle(posInitial.x, posInitial.y, 15, b2_dynamicBody);
@@ -137,6 +151,7 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(right1FlipperTex);
 	App->textures->Unload(right2FlipperTex);
 	App->textures->Unload(leftFlipperTex);
+	App->textures->Unload(sensorSprites);
 
 	delete ball;
 
@@ -155,6 +170,7 @@ update_status ModulePlayer::Update()
 			timer = 0;
 		}
 	}
+
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
 		propeller1Joint->EnableMotor(true);
 	}
@@ -234,14 +250,41 @@ update_status ModulePlayer::Update()
 	currentEmergency1Animation->Update();
 	currentEmergency2Animation->Update();
 	currentEmergency3Animation->Update();
+	currentBlue1Animation->Update();
+	currentBlue2Animation->Update();
+	currentBlue3Animation->Update();
+	currentBlue4Animation->Update();
+	currentBlue5Animation->Update();
+	currentBlue6Animation->Update();
+	currentBlue7Animation->Update();
+	currentBlue8Animation->Update();
+	currentTelAnimation->Update();
 
 	SDL_Rect rectEmergency1 = currentEmergency1Animation->GetCurrentFrame();
 	SDL_Rect rectEmergency2 = currentEmergency2Animation->GetCurrentFrame();
 	SDL_Rect rectEmergency3 = currentEmergency3Animation->GetCurrentFrame();
+	SDL_Rect rectBlue1 = currentBlue1Animation->GetCurrentFrame();
+	SDL_Rect rectBlue2 = currentBlue2Animation->GetCurrentFrame();
+	SDL_Rect rectBlue3 = currentBlue3Animation->GetCurrentFrame();
+	SDL_Rect rectBlue4 = currentBlue4Animation->GetCurrentFrame();
+	SDL_Rect rectBlue5 = currentBlue5Animation->GetCurrentFrame();
+	SDL_Rect rectBlue6 = currentBlue6Animation->GetCurrentFrame();
+	SDL_Rect rectBlue7 = currentBlue7Animation->GetCurrentFrame();
+	SDL_Rect rectBlue8 = currentBlue8Animation->GetCurrentFrame();
+	SDL_Rect rectTel = currentTelAnimation->GetCurrentFrame();
 
 	App->renderer->Blit(sensorSprites, 237, 119, &rectEmergency1);
 	App->renderer->Blit(sensorSprites, 280, 119, &rectEmergency2);
 	App->renderer->Blit(sensorSprites, 325, 119, &rectEmergency3);
+	App->renderer->Blit(sensorSprites, 307, 360, &rectBlue1);
+	App->renderer->Blit(sensorSprites, 332, 350, &rectBlue2);
+	App->renderer->Blit(sensorSprites, 362, 340, &rectBlue3);
+	App->renderer->Blit(sensorSprites, 447, 415, &rectBlue4);
+	App->renderer->Blit(sensorSprites, 447, 445, &rectBlue5);
+	App->renderer->Blit(sensorSprites, 447, 475, &rectBlue6);
+	App->renderer->Blit(sensorSprites, 58, 690, &rectBlue7);
+	App->renderer->Blit(sensorSprites, 502, 690, &rectBlue8);
+	App->renderer->Blit(sensorSprites, 380, 425, &rectTel);
 
 	SDL_Rect r1;
 	SDL_Rect r2;
@@ -344,6 +387,52 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	{
 		isTouchingBalls = false;
 	}
+
+	if (bodyA == App->scene_intro->blue1S)
+	{
+		currentBlue1Animation = &blue;
+	}
+
+	if (bodyA == App->scene_intro->blue2S)
+	{
+		currentBlue2Animation = &blue;
+	}
+
+	if (bodyA == App->scene_intro->blue3S)
+	{
+		currentBlue3Animation = &blue;
+	}
+
+	if (bodyA == App->scene_intro->blue4S)
+	{
+		currentBlue4Animation = &blue;
+	}
+
+	if (bodyA == App->scene_intro->blue5S)
+	{
+		currentBlue5Animation = &blue;
+	}
+
+	if (bodyA == App->scene_intro->blue6S)
+	{
+		currentBlue6Animation = &blue;
+	}
+
+	if (bodyA == App->scene_intro->blue7S)
+	{
+		currentBlue7Animation = &blue;
+	}
+
+	if (bodyA == App->scene_intro->blue8S)
+	{
+		currentBlue8Animation = &blue;
+	}
+
+	if (bodyA == App->scene_intro->telS)
+	{
+		currentTelAnimation = &tel;
+	}
+
 }
 
 

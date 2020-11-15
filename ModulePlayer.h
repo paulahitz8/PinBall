@@ -83,8 +83,18 @@ public:
 	Animation* currentEmergency1Animation = nullptr;
 	Animation* currentEmergency2Animation = nullptr;
 	Animation* currentEmergency3Animation = nullptr;
+	Animation* currentBlue1Animation = nullptr;
+	Animation* currentBlue2Animation = nullptr;
+	Animation* currentBlue3Animation = nullptr;
+	Animation* currentBlue4Animation = nullptr;
+	Animation* currentBlue5Animation = nullptr;
+	Animation* currentBlue6Animation = nullptr;
+	Animation* currentBlue7Animation = nullptr;
+	Animation* currentBlue8Animation = nullptr;
+	Animation* currentTelAnimation = nullptr;
 
 	Animation blank;
 	Animation emergency;
 	Animation blue;
+	Animation tel;
 };
