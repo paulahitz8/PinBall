@@ -43,7 +43,7 @@ bool ModulePlayer::Start()
 	rec1Fx = App->audio->LoadFx("pinball/Sounds/rec1.ogg");
 	rec2Fx = App->audio->LoadFx("pinball/Sounds/rec2.ogg");
 	rec3Fx = App->audio->LoadFx("pinball/Sounds/rec3.ogg");
-	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper.ogg");
+	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper.wav");
 	bonusFx = App->audio->LoadFx("pinball/Sounds/bonus.ogg");
 
 
@@ -202,7 +202,7 @@ update_status ModulePlayer::Update()
 			right2FlipperJoint->EnableMotor(true);
 			if (isFlippin == false)
 			{
-				//App->audio->PlayFx(flipperSound);
+				App->audio->PlayFx(flipperFx);
 			}
 			isFlippin = true;
 		}
@@ -219,7 +219,7 @@ update_status ModulePlayer::Update()
 			leftFlipperJoint->EnableMotor(true);
 			if (isFlippin == false)
 			{
-				//App->audio->PlayFx(flipperSound);
+				App->audio->PlayFx(flipperFx);
 			}
 			isFlippin = true;
 		}
@@ -230,17 +230,28 @@ update_status ModulePlayer::Update()
 			isFlippin = false;
 		}
 
+
+		if (App->scene_intro->score > App->scene_intro->highScore)
+		{
+			App->scene_intro->highScore = App->scene_intro->score;
+		}
+
+
 		if (ballPos.y > 920)
 		{
-			if (lifeCount != 0)
+			lifeCount--;
+			if (lifeCount > 0)
 			{
 				b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
 
 				ball->body->SetTransform(startPos, ball->GetRotation());
-				lifeCount--;
+				
 			}
-			else
+			else if (lifeCount == 0)
 			{
+				isDead = true;
+				b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
+				App->player->ball->body->SetTransform(startPos, App->player->ball->GetRotation());
 				isDead = true;
 			}
 		}

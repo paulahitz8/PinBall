@@ -37,18 +37,17 @@ bool ModuleSceneIntro::Start()
 
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
-	background = App->textures->Load("pinball/background.png");
+	background = App->textures->Load("pinball/background1.png");
 	ball = App->textures->Load("pinball/ball2.png");
-	circle = App->textures->Load("pinball/wheel.png"); 
-	box = App->textures->Load("pinball/crate.png");
-	rick = App->textures->Load("pinball/rick_head.png");
-	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
+
+	App->audio->PlayMusic("pinball/Sounds/song.ogg");
 
 	//Font
-	font = App->fonts->Load("pinball/fontwhite.png", "0123456789", 1);
-	previousScore = 0;
-	score = 69;
-	highScore = 0;
+	fontwhite = App->fonts->Load("pinball/fontwhite.png", "0123456789", 1);
+	fontblack = App->fonts->Load("pinball/fontblack.png", "0123456789", 1);
+	//previousScore = 0;
+	score = 0;
+	//highScore = 0;
 
 	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
 
@@ -107,7 +106,8 @@ bool ModuleSceneIntro::Start()
 	waterEntrance2S = App->physics->CreateRectangleSensor(467, 645, 27, 11);
 	waterEntrance2S->listener = (Module*)App->player;
 
-	
+	App->player->lifeCount = 3;
+
 	return ret;
 }
 
@@ -253,10 +253,13 @@ update_status ModuleSceneIntro::Update()
 	sprintf_s(previousScoreText, 10, "%4d", previousScore);
 	sprintf_s(lifeText, 10, "%1d", App->player->lifeCount);
 
-	App->fonts->BlitText(550, 0, font, scoreText);
+	App->fonts->BlitText(540, 35, fontwhite, scoreText);
 	/*App->fonts->BlitText(0, 0, font, highScoreText);
-	App->fonts->BlitText(0, 0, font, previousScoreText);
-	App->fonts->BlitText(0, 0, font, lifeText);*/
+	App->fonts->BlitText(0, 0, font, previousScoreText);*/
+	App->fonts->BlitText(80, 902, fontwhite, lifeText);
+
+
+
 
 	return UPDATE_CONTINUE;
 }

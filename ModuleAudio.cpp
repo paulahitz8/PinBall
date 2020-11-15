@@ -37,13 +37,13 @@ bool ModuleAudio::Init()
 		ret = false;
 	}
 
-	//Initialize SDL_mixer
-	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	// Initialize SDL_mixer
+	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
 		LOG("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 		ret = true;
 	}
-
+	else { Mix_VolumeMusic(10); }
 	return ret;
 }
 
@@ -161,6 +161,24 @@ bool ModuleAudio::PlayFx(unsigned int id, int repeat)
 	if(fx.at(id-1, chunk) == true)
 	{
 		Mix_PlayChannel(-1, chunk, repeat);
+		ret = true;
+	}
+
+	return ret;
+}
+
+bool ModuleAudio::UnloadFx(uint index)
+{
+	bool ret = false;
+
+	p2List_item<Mix_Chunk*>* list;
+	list = fx.getFirst();
+
+	fx.at(index, list->data);
+	if (list->data != NULL)
+	{
+		Mix_FreeChunk(list->data);
+		list->data = nullptr;
 		ret = true;
 	}
 
