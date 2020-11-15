@@ -12,6 +12,7 @@
 #include "IntroScreen.h"
 #include "ModuleSceneIntro.h"
 #include "ModulePlayer.h"
+#include "ModuleFonts.h"
 
 
 
@@ -27,7 +28,7 @@ bool EndScreen::Start()
 
 	//app->audio->PlayMusic("Assets/audio/music/TitleScreenMusic.ogg");
 
-	endScreen = App->textures->Load("pinball/IntroScreen.png");
+	endScreen = App->textures->Load("pinball/gameoverScreen.png");
 
 	return ret;
 }
@@ -39,6 +40,11 @@ update_status EndScreen::Update()
 
 	
 	App->renderer->Blit(endScreen, 0, 0, &rect);
+
+	//Scores
+	App->fonts->BlitText(550, 0, App->scene_intro->font, App->scene_intro->scoreText);
+	App->fonts->BlitText(0, 0, App->scene_intro->font, App->scene_intro->highScoreText);
+	App->fonts->BlitText(0, 0, App->scene_intro->font, App->scene_intro->previousScoreText);
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{

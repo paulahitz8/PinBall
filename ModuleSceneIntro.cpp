@@ -47,7 +47,7 @@ bool ModuleSceneIntro::Start()
 	//Font
 	font = App->fonts->Load("pinball/fontwhite.png", "0123456789", 1);
 	previousScore = 0;
-	score = 69;
+	score = 0;
 	highScore = 0;
 
 	//sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
