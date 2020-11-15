@@ -55,7 +55,8 @@ public:
 	PhysBody* waterEntrance1S = nullptr;
 	PhysBody* waterEntrance2S = nullptr;
 
-	int font = -1;
+	int fontwhite = -1;
+	int fontblack = -1;
 	int score;
 	int highScore;
 	int previousScore;

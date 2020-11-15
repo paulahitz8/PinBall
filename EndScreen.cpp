@@ -42,9 +42,9 @@ update_status EndScreen::Update()
 	App->renderer->Blit(endScreen, 0, 0, &rect);
 
 	//Scores
-	App->fonts->BlitText(550, 0, App->scene_intro->font, App->scene_intro->scoreText);
-	App->fonts->BlitText(0, 0, App->scene_intro->font, App->scene_intro->highScoreText);
-	App->fonts->BlitText(0, 0, App->scene_intro->font, App->scene_intro->previousScoreText);
+	App->fonts->BlitText(382, 685, App->scene_intro->fontblack, App->scene_intro->scoreText);
+	App->fonts->BlitText(382, 793, App->scene_intro->fontblack, App->scene_intro->highScoreText);
+	App->fonts->BlitText(382, 879, App->scene_intro->fontblack, App->scene_intro->previousScoreText);
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{

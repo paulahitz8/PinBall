@@ -232,14 +232,14 @@ update_status ModulePlayer::Update()
 
 		if (ballPos.y > 920)
 		{
-			if (lifeCount != 0)
+			if (lifeCount > 0)
 			{
 				b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
 
 				ball->body->SetTransform(startPos, ball->GetRotation());
 				lifeCount--;
 			}
-			else
+			else if (lifeCount == 0)
 			{
 
 				isDead = true;
@@ -325,7 +325,7 @@ update_status ModulePlayer::PostUpdate() {
 		App->scene_intro->Disable();
 		App->end->Enable();
 		App->physics->debug = false;
-		lifeCount = 1;
+		//lifeCount = 3;
 
 	}
 
