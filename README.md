@@ -45,4 +45,4 @@ Link to the source: https://github.com/paulahitz8/PinBall
 - We added a score and lives
 - We deleted the water tube
 
-Disclaimer: all of these changes were made to improve the game in our opinion and make it more playable (for example, less bumpers)
+Disclaimer: we did not find the original sound files
