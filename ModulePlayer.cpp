@@ -230,20 +230,28 @@ update_status ModulePlayer::Update()
 			isFlippin = false;
 		}
 
+
+		if (App->scene_intro->score > App->scene_intro->highScore)
+		{
+			App->scene_intro->highScore = App->scene_intro->score;
+		}
+
+
 		if (ballPos.y > 920)
 		{
+			lifeCount--;
 			if (lifeCount > 0)
 			{
 				b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
 
 				ball->body->SetTransform(startPos, ball->GetRotation());
-				lifeCount--;
+				
 			}
 			else if (lifeCount == 0)
 			{
-
+				b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
+				App->player->ball->body->SetTransform(startPos, App->player->ball->GetRotation());
 				isDead = true;
-
 				//gameover
 			}
 		}

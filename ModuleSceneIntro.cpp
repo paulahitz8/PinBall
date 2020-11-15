@@ -260,6 +260,9 @@ update_status ModuleSceneIntro::Update()
 	App->fonts->BlitText(0, 0, font, previousScoreText);*/
 	App->fonts->BlitText(0, 0, fontwhite, lifeText);
 
+
+
+
 	return UPDATE_CONTINUE;
 }
 

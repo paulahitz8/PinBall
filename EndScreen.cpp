@@ -25,6 +25,9 @@ bool EndScreen::Start()
 {
 	bool ret = true;
 	isActive = true;
+	App->player->lifeCount = 3;
+
+
 
 	//app->audio->PlayMusic("Assets/audio/music/TitleScreenMusic.ogg");
 
@@ -41,10 +44,22 @@ update_status EndScreen::Update()
 	
 	App->renderer->Blit(endScreen, 0, 0, &rect);
 
+
+	
+	if (App->scene_intro->score > App->scene_intro->previousScore && App->scene_intro->score > App->scene_intro->highScore)
+	{
+		App->scene_intro->highScore = App->scene_intro->score;
+	}
+	else if (App->scene_intro->score < App->scene_intro->previousScore)
+	{
+		App->scene_intro->highScore = App->scene_intro->previousScore;
+	}
+	App->scene_intro->previousScore = App->scene_intro->score;
+
 	//Scores
 	App->fonts->BlitText(382, 685, App->scene_intro->fontblack, App->scene_intro->scoreText);
-	App->fonts->BlitText(382, 793, App->scene_intro->fontblack, App->scene_intro->highScoreText);
-	App->fonts->BlitText(382, 879, App->scene_intro->fontblack, App->scene_intro->previousScoreText);
+	App->fonts->BlitText(382, 879, App->scene_intro->fontblack, App->scene_intro->highScoreText);
+	App->fonts->BlitText(382, 793, App->scene_intro->fontblack, App->scene_intro->previousScoreText);
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
@@ -64,6 +79,7 @@ update_status EndScreen::PostUpdate()
 {
 	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_UP) { return UPDATE_STOP; }
 
+	
 	return UPDATE_CONTINUE;
 }
 
