@@ -8,6 +8,7 @@
 #include "ModulePhysics.h"
 #include "ModuleFonts.h"
 #include "ModulePlayer.h"
+#include "EndScreen.h"
 
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -23,6 +24,14 @@ ModuleSceneIntro::~ModuleSceneIntro()
 // Load assets
 bool ModuleSceneIntro::Start()
 {
+
+	if (App->end->isActive == true)
+	{
+		App->player->isDead = false;
+		App->end->Disable();
+		App->end->isActive = false;
+	}
+
 	LOG("Loading Intro assets");
 	bool ret = true;
 
@@ -117,6 +126,8 @@ bool ModuleSceneIntro::CleanUp()
 update_status ModuleSceneIntro::Update()
 {
 	App->renderer->Blit(background, 0, 0);
+
+
 
 	/*if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{

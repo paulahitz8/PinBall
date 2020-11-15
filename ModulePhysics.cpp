@@ -6,6 +6,7 @@
 #include "p2Point.h"
 #include "math.h"
 #include "ModulePlayer.h"
+#include "EndScreen.h"
 
 #ifdef _DEBUG
 #pragma comment( lib, "Box2D/libx86/Debug/Box2D.lib" )
@@ -629,8 +630,11 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, b2Body
 // 
 update_status ModulePhysics::PostUpdate()
 {
-	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+	if ((App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) && (App->end->isActive == false))
+	{
 		debug = !debug;
+	}
+
 
 	if(!debug)
 		return UPDATE_CONTINUE;

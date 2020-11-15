@@ -30,7 +30,7 @@ public:
 	uint flipperFx;
 	uint bonusFx;
 
-	uint lifeCount = 2;
+	uint lifeCount = 1;
 	int timer = 0;
 
 	bool isFlippin;

@@ -23,6 +23,7 @@ EndScreen::~EndScreen() {}
 bool EndScreen::Start()
 {
 	bool ret = true;
+	isActive = true;
 
 	//app->audio->PlayMusic("Assets/audio/music/TitleScreenMusic.ogg");
 
@@ -35,13 +36,19 @@ update_status EndScreen::Update()
 {
 	SDL_Rect rect;
 	rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+	
 	App->renderer->Blit(endScreen, 0, 0, &rect);
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
 		App->player->Enable();
 		App->scene_intro->Enable();
+	}
 
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) 
+	{
+		LOG("There are no physics available here");
 	}
 
 	return UPDATE_CONTINUE;
