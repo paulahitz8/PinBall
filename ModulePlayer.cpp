@@ -241,10 +241,7 @@ update_status ModulePlayer::Update()
 			}
 			else
 			{
-
 				isDead = true;
-
-				//gameover
 			}
 		}
 
@@ -321,12 +318,10 @@ update_status ModulePlayer::PostUpdate() {
 
 	if (isDead == true) 
 	{
-
 		App->scene_intro->Disable();
 		App->end->Enable();
 		App->physics->debug = false;
-		lifeCount = 1;
-
+		lifeCount = 3;
 	}
 
 	return UPDATE_CONTINUE;
@@ -388,6 +383,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			App->scene_intro->score += 15;
 		}
 	}
+
 	else 
 	{
 		isTouchingBalls = false;
