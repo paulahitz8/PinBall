@@ -14,8 +14,6 @@
 #pragma comment( lib, "Box2D/libx86/Release/Box2D.lib" )
 #endif
 
-
-// Pivot 0, 0
 int background[146] = {
 	597, 878,
 	604, 878,
@@ -92,7 +90,6 @@ int background[146] = {
 	597, 931
 };
 
-// Pivot 0, 0
 int background2[101] = {
 	205, 53,
 	232, 109,
@@ -200,7 +197,6 @@ int hockeyright[20] = {
 	498, 638
 };
 
-//rebota
 int bumperclock[26] = {
 	154, 294,
 	172, 303,
@@ -225,7 +221,6 @@ int backbumperleft[10] = {
 	151, 717
 };
 
-//rebota
 int bumperleft[14] = {
 	140, 641,
 	145, 632,
@@ -246,7 +241,6 @@ int backbumperright[14] = {
 	439, 658
 };
 
-//rebota
 int bumperright[14] = {
 	442, 630,
 	433, 642,
@@ -257,7 +251,6 @@ int bumperright[14] = {
 	432, 673
 };
 
-//rebota
 int circle1[24] = {
 	323, 191,
 	311, 195,
@@ -273,7 +266,6 @@ int circle1[24] = {
 	335, 193
 };
 
-//rebota
 int circle2[24] = {
 	240, 225,
 	228, 229,
@@ -289,7 +281,6 @@ int circle2[24] = {
 	251, 226
 };
 
-//rebota
 int circle3[20] = {
 	335, 278,
 	324, 285,
@@ -303,7 +294,6 @@ int circle3[20] = {
 	345, 281
 };
 
-//overlap
 int waterwall1[96] = {
 	185, 467,
 	101, 322,
@@ -355,7 +345,6 @@ int waterwall1[96] = {
 	182, 472
 };
 
-//overlap
 int waterwall2[102] = {
 	153, 339,
 	89, 229,
@@ -409,23 +398,6 @@ int waterwall2[102] = {
 	57, 158,
 	215, 426
 };
-
-//boost and deny
-int waterboost1[8] = {
-	202, 421,
-	171, 439,
-	165, 432,
-	198, 414
-};
-
-//boost and deny
-int waterboost2[8] = {
-	454, 641,
-	489, 640,
-	489, 631,
-	454, 631
-};
-
 
 
 ModulePhysics::ModulePhysics(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -488,13 +460,11 @@ bool ModulePhysics::Start()
 	CreateChain(0, 0, circle3, 20, b2_staticBody, 0, true);
 	CreateChain(0, 0, waterwall1, 96, b2_staticBody, 0, false);
 	CreateChain(0, 0, waterwall2, 104, b2_staticBody, 0, false);
-	//CreateChain(0, 0, waterboost1, 8, b2_staticBody, 0);
-	//CreateChain(0, 0, waterboost2, 8, b2_staticBody, 0);
 
 	return true;
 }
 
-// 
+
 update_status ModulePhysics::PreUpdate()
 {
 	world->Step(1.0f / 60.0f, 6, 2);
