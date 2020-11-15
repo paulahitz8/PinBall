@@ -191,7 +191,7 @@ update_status ModulePlayer::Update()
 		if (ringRang == true)
 		{
 			timerR++;
-			if (timerR == 50)
+			if (timerR == 120)
 			{
 				ringRang = false;
 				currentTelAnimation = &blank;
