@@ -43,7 +43,7 @@ bool ModulePlayer::Start()
 	rec1Fx = App->audio->LoadFx("pinball/Sounds/rec1.ogg");
 	rec2Fx = App->audio->LoadFx("pinball/Sounds/rec2.ogg");
 	rec3Fx = App->audio->LoadFx("pinball/Sounds/rec3.ogg");
-	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper.ogg");
+	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper2.wav");
 	bonusFx = App->audio->LoadFx("pinball/Sounds/bonus.ogg");
 
 
@@ -202,7 +202,7 @@ update_status ModulePlayer::Update()
 			right2FlipperJoint->EnableMotor(true);
 			if (isFlippin == false)
 			{
-				//App->audio->PlayFx(flipperSound);
+				App->audio->PlayFx(flipperFx);
 			}
 			isFlippin = true;
 		}
@@ -219,7 +219,7 @@ update_status ModulePlayer::Update()
 			leftFlipperJoint->EnableMotor(true);
 			if (isFlippin == false)
 			{
-				//App->audio->PlayFx(flipperSound);
+				App->audio->PlayFx(flipperFx);
 			}
 			isFlippin = true;
 		}

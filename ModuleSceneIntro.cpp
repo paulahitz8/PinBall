@@ -37,12 +37,10 @@ bool ModuleSceneIntro::Start()
 
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
-	background = App->textures->Load("pinball/background.png");
+	background = App->textures->Load("pinball/background1.png");
 	ball = App->textures->Load("pinball/ball2.png");
-	circle = App->textures->Load("pinball/wheel.png"); 
-	box = App->textures->Load("pinball/crate.png");
-	rick = App->textures->Load("pinball/rick_head.png");
-	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
+
+	App->audio->PlayMusic("pinball/Sounds/song1.wav");
 
 	//Font
 	fontwhite = App->fonts->Load("pinball/fontwhite.png", "0123456789", 1);
@@ -255,10 +253,10 @@ update_status ModuleSceneIntro::Update()
 	sprintf_s(previousScoreText, 10, "%4d", previousScore);
 	sprintf_s(lifeText, 10, "%1d", App->player->lifeCount);
 
-	App->fonts->BlitText(550, 0, fontwhite, scoreText);
+	App->fonts->BlitText(540, 35, fontwhite, scoreText);
 	/*App->fonts->BlitText(0, 0, font, highScoreText);
 	App->fonts->BlitText(0, 0, font, previousScoreText);*/
-	App->fonts->BlitText(0, 0, fontwhite, lifeText);
+	App->fonts->BlitText(80, 902, fontwhite, lifeText);
 
 
 

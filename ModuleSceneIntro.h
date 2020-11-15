@@ -66,5 +66,5 @@ public:
 	char previousScoreText[10] = { "\0" };
 	char lifeText[10] = { "\0" };
 
-
+	unsigned int song = 0;
 };

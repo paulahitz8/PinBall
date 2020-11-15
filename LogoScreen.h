@@ -22,5 +22,5 @@ private:
 	SDL_Texture* logoScreen;
 	SDL_Rect rect;
 	int timer = 0;
-	unsigned int logoFx = 0;
+	uint logoFx = 0;
 };

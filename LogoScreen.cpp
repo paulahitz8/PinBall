@@ -25,13 +25,14 @@ bool LogoScreen::Start()
 
 	logoScreen = App->textures->Load("pinball/LogoScreen2.png");
 
-	//App->audio->PlayMusic("Assets/audio/music/LogoScreenMusic.ogg");
+	logoFx = App->audio->LoadFx("pinball/Sounds/LogoScreenMusic.ogg");
 
 	//App->scene_intro->Disable;
 	//App->player->active = false;
 	//App->scene_intro->active = false;
 	//App->introScreen->active = false;
-	
+
+	App->audio->PlayFx(logoFx);
 
 	return ret;
 }
@@ -42,7 +43,7 @@ update_status LogoScreen::Update()
 	rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 	App->renderer->Blit(logoScreen, 0, 0, &rect);
 	timer++;
-
+	
 	return UPDATE_CONTINUE;
 }
 
