@@ -16,6 +16,7 @@ class ModuleFonts;
 class FadeScreen;
 class LogoScreen;
 class IntroScreen;
+class EndScreen;
 
 class Application
 {
@@ -32,6 +33,7 @@ public:
 	FadeScreen* fade;
 	IntroScreen* intro;
 	LogoScreen* logo;
+	EndScreen* end;
 	
 
 private:

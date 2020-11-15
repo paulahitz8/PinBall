@@ -13,6 +13,7 @@
 #include "FadeScreen.h"
 #include "LogoScreen.h"
 #include "IntroScreen.h"
+#include "EndScreen.h"
 
 
 #include "Application.h"
@@ -31,6 +32,7 @@ Application::Application()
 	fade = new FadeScreen(this);
 	logo = new LogoScreen(this);
 	intro = new IntroScreen(this);
+	end = new EndScreen(this);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -47,6 +49,7 @@ Application::Application()
 	AddModule(fade);
 	AddModule(logo);
 	AddModule(intro);
+	AddModule(end);
 	
 	// Scenes
 	AddModule(scene_intro);

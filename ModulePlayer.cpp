@@ -241,8 +241,6 @@ update_status ModulePlayer::Update()
 
 			isDead = true;
 
-
-
 			//gameover
 		}
 	}
@@ -322,6 +320,11 @@ update_status ModulePlayer::PostUpdate() {
 
 	if (isDead == true) 
 	{
+		// Module player-> Disable()
+		//ModuleSceneIntro-> Disable()
+		App->physics->debug = false;
+		//Module deathScreen -> Enable()
+
 	}
 
 	return UPDATE_CONTINUE;
