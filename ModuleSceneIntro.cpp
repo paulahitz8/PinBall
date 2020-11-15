@@ -102,7 +102,7 @@ bool ModuleSceneIntro::Start()
 	waterEntrance2S = App->physics->CreateRectangleSensor(467, 645, 27, 11);
 	waterEntrance2S->listener = (Module*)App->player;
 
-	App->player->lifeCount = 3;
+	App->player->lifeCount = 6;
 
 	return ret;
 }

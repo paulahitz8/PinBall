@@ -418,7 +418,7 @@ update_status ModulePlayer::PostUpdate() {
 		App->scene_intro->Disable();
 		App->end->Enable();
 		App->physics->debug = false;
-		lifeCount = 3;
+		lifeCount = 6;
 	}
 
 	return UPDATE_CONTINUE;
