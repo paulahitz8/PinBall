@@ -162,169 +162,170 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	if (totalPass == true)
-	{
-		timer++;
-		if (timer == 20)
+
+	if (App->end->isActive == false) {
+		if (totalPass == true)
 		{
-			totalPass = false;
-			timer = 0;
+			timer++;
+			if (timer == 20)
+			{
+				totalPass = false;
+				timer = 0;
+			}
 		}
-	}
 
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
-		propeller1Joint->EnableMotor(true);
-	}
-
-	else
-	{
-		propeller1Joint->EnableMotor(false);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
-	{
-		ball = App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 15, b2_dynamicBody);
-	}
-
-	if (((ballPos.x > 50 && ballPos.x < 96) && (ballPos.y >829 && ballPos.y < 872)) ||
-		((ballPos.x > 493 && ballPos.x < 544) && (ballPos.y > 829 && ballPos.y < 872)))
-	{
-		b2Vec2 impulse = b2Vec2(0.0f, -8.0f);
-		b2Vec2 point = ball->body->GetLocalCenter();
-		ball->body->ApplyLinearImpulse(impulse, point, true);
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
-	{
-		right1FlipperJoint->EnableMotor(true);
-		right2FlipperJoint->EnableMotor(true);
-		if (isFlippin == false)
-		{
-			//App->audio->PlayFx(flipperSound);
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
+			propeller1Joint->EnableMotor(true);
 		}
-		isFlippin = true;
-	}
 
-	else if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_UP)
-	{
-		right1FlipperJoint->EnableMotor(false);
-		right2FlipperJoint->EnableMotor(false);
-		isFlippin = false;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
-	{
-		leftFlipperJoint->EnableMotor(true);
-		if (isFlippin == false)
-		{
-			//App->audio->PlayFx(flipperSound);
-		}
-		isFlippin = true;
-	}
-
-	else if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_UP)
-	{
-		leftFlipperJoint->EnableMotor(false);
-		isFlippin = false;
-	}
-
-	if (ballPos.y > 920)
-	{
-		if (lifeCount != 0)
-		{
-			b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
-
-			ball->body->SetTransform(startPos, ball->GetRotation());
-			lifeCount--;
-		}
 		else
 		{
-
-			isDead = true;
-
-			//gameover
+			propeller1Joint->EnableMotor(false);
 		}
+
+		if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+		{
+			ball = App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 15, b2_dynamicBody);
+		}
+
+		if (((ballPos.x > 50 && ballPos.x < 96) && (ballPos.y > 829 && ballPos.y < 872)) ||
+			((ballPos.x > 493 && ballPos.x < 544) && (ballPos.y > 829 && ballPos.y < 872)))
+		{
+			b2Vec2 impulse = b2Vec2(0.0f, -8.0f);
+			b2Vec2 point = ball->body->GetLocalCenter();
+			ball->body->ApplyLinearImpulse(impulse, point, true);
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
+		{
+			right1FlipperJoint->EnableMotor(true);
+			right2FlipperJoint->EnableMotor(true);
+			if (isFlippin == false)
+			{
+				//App->audio->PlayFx(flipperSound);
+			}
+			isFlippin = true;
+		}
+
+		else if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_UP)
+		{
+			right1FlipperJoint->EnableMotor(false);
+			right2FlipperJoint->EnableMotor(false);
+			isFlippin = false;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
+		{
+			leftFlipperJoint->EnableMotor(true);
+			if (isFlippin == false)
+			{
+				//App->audio->PlayFx(flipperSound);
+			}
+			isFlippin = true;
+		}
+
+		else if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_UP)
+		{
+			leftFlipperJoint->EnableMotor(false);
+			isFlippin = false;
+		}
+
+		if (ballPos.y > 920)
+		{
+			if (lifeCount != 0)
+			{
+				b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
+
+				ball->body->SetTransform(startPos, ball->GetRotation());
+				lifeCount--;
+			}
+			else
+			{
+
+				isDead = true;
+
+				//gameover
+			}
+		}
+
+		currentEmergency1Animation->Update();
+		currentEmergency2Animation->Update();
+		currentEmergency3Animation->Update();
+		currentBlue1Animation->Update();
+		currentBlue2Animation->Update();
+		currentBlue3Animation->Update();
+		currentBlue4Animation->Update();
+		currentBlue5Animation->Update();
+		currentBlue6Animation->Update();
+		currentBlue7Animation->Update();
+		currentBlue8Animation->Update();
+		currentTelAnimation->Update();
+
+		SDL_Rect rectEmergency1 = currentEmergency1Animation->GetCurrentFrame();
+		SDL_Rect rectEmergency2 = currentEmergency2Animation->GetCurrentFrame();
+		SDL_Rect rectEmergency3 = currentEmergency3Animation->GetCurrentFrame();
+		SDL_Rect rectBlue1 = currentBlue1Animation->GetCurrentFrame();
+		SDL_Rect rectBlue2 = currentBlue2Animation->GetCurrentFrame();
+		SDL_Rect rectBlue3 = currentBlue3Animation->GetCurrentFrame();
+		SDL_Rect rectBlue4 = currentBlue4Animation->GetCurrentFrame();
+		SDL_Rect rectBlue5 = currentBlue5Animation->GetCurrentFrame();
+		SDL_Rect rectBlue6 = currentBlue6Animation->GetCurrentFrame();
+		SDL_Rect rectBlue7 = currentBlue7Animation->GetCurrentFrame();
+		SDL_Rect rectBlue8 = currentBlue8Animation->GetCurrentFrame();
+		SDL_Rect rectTel = currentTelAnimation->GetCurrentFrame();
+
+		App->renderer->Blit(sensorSprites, 237, 119, &rectEmergency1);
+		App->renderer->Blit(sensorSprites, 280, 119, &rectEmergency2);
+		App->renderer->Blit(sensorSprites, 325, 119, &rectEmergency3);
+		App->renderer->Blit(sensorSprites, 307, 360, &rectBlue1);
+		App->renderer->Blit(sensorSprites, 332, 350, &rectBlue2);
+		App->renderer->Blit(sensorSprites, 362, 340, &rectBlue3);
+		App->renderer->Blit(sensorSprites, 447, 415, &rectBlue4);
+		App->renderer->Blit(sensorSprites, 447, 445, &rectBlue5);
+		App->renderer->Blit(sensorSprites, 447, 475, &rectBlue6);
+		App->renderer->Blit(sensorSprites, 58, 690, &rectBlue7);
+		App->renderer->Blit(sensorSprites, 502, 690, &rectBlue8);
+		App->renderer->Blit(sensorSprites, 380, 425, &rectTel);
+
+		SDL_Rect r1;
+		SDL_Rect r2;
+		SDL_Rect r3;
+		SDL_Rect rball;
+
+		r1 = { 302, 818, 109, 26 };
+		r2 = { 457, 352, 101, 26 };
+		r3 = { 176, 820, 110, 27 };
+		rball = { 566, 815, 30, 30 };
+
+		//Ball
+		ball->GetPosition(ballPos.x, ballPos.y);
+		App->renderer->Blit(ballTex, ballPos.x, ballPos.y, &rball);
+
+		//Down right flipper
+		right1Flipper->GetPosition(pos.x, pos.y);
+		App->renderer->Blit(right1FlipperTex, pos.x, pos.y, &r1, 1.0f, right1Flipper->GetRotation());
+
+		//Up right flipper
+		right2Flipper->GetPosition(pos.x, pos.y);
+		App->renderer->Blit(right2FlipperTex, pos.x - 5, pos.y - 5, &r2, 1.0f, right2Flipper->GetRotation());
+
+		//Left flipper
+		leftFlipper->GetPosition(pos.x, pos.y);
+		App->renderer->Blit(leftFlipperTex, pos.x, pos.y, &r3, 1.0f, leftFlipper->GetRotation());
 	}
-
-	currentEmergency1Animation->Update();
-	currentEmergency2Animation->Update();
-	currentEmergency3Animation->Update();
-	currentBlue1Animation->Update();
-	currentBlue2Animation->Update();
-	currentBlue3Animation->Update();
-	currentBlue4Animation->Update();
-	currentBlue5Animation->Update();
-	currentBlue6Animation->Update();
-	currentBlue7Animation->Update();
-	currentBlue8Animation->Update();
-	currentTelAnimation->Update();
-
-	SDL_Rect rectEmergency1 = currentEmergency1Animation->GetCurrentFrame();
-	SDL_Rect rectEmergency2 = currentEmergency2Animation->GetCurrentFrame();
-	SDL_Rect rectEmergency3 = currentEmergency3Animation->GetCurrentFrame();
-	SDL_Rect rectBlue1 = currentBlue1Animation->GetCurrentFrame();
-	SDL_Rect rectBlue2 = currentBlue2Animation->GetCurrentFrame();
-	SDL_Rect rectBlue3 = currentBlue3Animation->GetCurrentFrame();
-	SDL_Rect rectBlue4 = currentBlue4Animation->GetCurrentFrame();
-	SDL_Rect rectBlue5 = currentBlue5Animation->GetCurrentFrame();
-	SDL_Rect rectBlue6 = currentBlue6Animation->GetCurrentFrame();
-	SDL_Rect rectBlue7 = currentBlue7Animation->GetCurrentFrame();
-	SDL_Rect rectBlue8 = currentBlue8Animation->GetCurrentFrame();
-	SDL_Rect rectTel = currentTelAnimation->GetCurrentFrame();
-
-	App->renderer->Blit(sensorSprites, 237, 119, &rectEmergency1);
-	App->renderer->Blit(sensorSprites, 280, 119, &rectEmergency2);
-	App->renderer->Blit(sensorSprites, 325, 119, &rectEmergency3);
-	App->renderer->Blit(sensorSprites, 307, 360, &rectBlue1);
-	App->renderer->Blit(sensorSprites, 332, 350, &rectBlue2);
-	App->renderer->Blit(sensorSprites, 362, 340, &rectBlue3);
-	App->renderer->Blit(sensorSprites, 447, 415, &rectBlue4);
-	App->renderer->Blit(sensorSprites, 447, 445, &rectBlue5);
-	App->renderer->Blit(sensorSprites, 447, 475, &rectBlue6);
-	App->renderer->Blit(sensorSprites, 58, 690, &rectBlue7);
-	App->renderer->Blit(sensorSprites, 502, 690, &rectBlue8);
-	App->renderer->Blit(sensorSprites, 380, 425, &rectTel);
-
-	SDL_Rect r1;
-	SDL_Rect r2;
-	SDL_Rect r3;
-	SDL_Rect rball;
-
-	r1 = { 302, 818, 109, 26 };
-	r2 = { 457, 352, 101, 26 };
-	r3 = { 176, 820, 110, 27 };
-	rball = { 566, 815, 30, 30 };
-
-	//Ball
-	ball->GetPosition(ballPos.x, ballPos.y);
-	App->renderer->Blit(ballTex, ballPos.x, ballPos.y, &rball);
-
-	//Down right flipper
-	right1Flipper->GetPosition(pos.x, pos.y);
-	App->renderer->Blit(right1FlipperTex, pos.x, pos.y, &r1, 1.0f, right1Flipper->GetRotation());
-
-	//Up right flipper
-	right2Flipper->GetPosition(pos.x, pos.y);
-	App->renderer->Blit(right2FlipperTex, pos.x - 5, pos.y - 5, &r2, 1.0f, right2Flipper->GetRotation());
-
-	//Left flipper
-	leftFlipper->GetPosition(pos.x, pos.y);
-	App->renderer->Blit(leftFlipperTex, pos.x, pos.y, &r3, 1.0f, leftFlipper->GetRotation());
-
 
 	return UPDATE_CONTINUE;
 }
-
-
 
 update_status ModulePlayer::PostUpdate() {
 
 	if (isDead == true) 
 	{
-		//App->player->Disable();
+
 		App->scene_intro->Disable();
 		App->end->Enable();
 		App->physics->debug = false;
+		lifeCount = 1;
 
 	}
 

@@ -36,16 +36,14 @@ update_status EndScreen::Update()
 {
 	SDL_Rect rect;
 	rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+	
 	App->renderer->Blit(endScreen, 0, 0, &rect);
 
 	if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
 		App->player->Enable();
 		App->scene_intro->Enable();
-		Disable();
-
-		isActive = false;
-
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN) 
