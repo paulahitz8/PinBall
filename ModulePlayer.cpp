@@ -43,7 +43,7 @@ bool ModulePlayer::Start()
 	rec1Fx = App->audio->LoadFx("pinball/Sounds/rec1.ogg");
 	rec2Fx = App->audio->LoadFx("pinball/Sounds/rec2.ogg");
 	rec3Fx = App->audio->LoadFx("pinball/Sounds/rec3.ogg");
-	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper2.wav");
+	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper.wav");
 	bonusFx = App->audio->LoadFx("pinball/Sounds/bonus.ogg");
 
 
