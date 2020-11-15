@@ -40,7 +40,7 @@ bool ModuleSceneIntro::Start()
 	background = App->textures->Load("pinball/background1.png");
 	ball = App->textures->Load("pinball/ball2.png");
 
-	App->audio->PlayMusic("pinball/Sounds/song1.wav");
+	App->audio->PlayMusic("pinball/Sounds/song.ogg");
 
 	//Font
 	fontwhite = App->fonts->Load("pinball/fontwhite.png", "0123456789", 1);
