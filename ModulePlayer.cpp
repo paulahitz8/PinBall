@@ -32,7 +32,7 @@ bool ModulePlayer::Start()
 
 	tel.PushBack({ 622, 429, 73, 61 });
 	tel.PushBack({ 600, 196, 27, 27 });
-	tel.speed = 0.02f;
+	tel.speed = 0.2f;
 
 	right1FlipperTex = App->textures->Load("pinball/flipperdownrightstraight.png");
 	right2FlipperTex = App->textures->Load("pinball/flipperuprightstraight.png");
@@ -47,7 +47,7 @@ bool ModulePlayer::Start()
 	bonusFx = App->audio->LoadFx("pinball/Sounds/bonus.ogg");
 
 
-	posInitial = { 570, 815 };
+	posInitial = { 570, 835 };
 	vecInitial = { 570, 815 };
 	ballPos = posInitial;
 	
@@ -162,7 +162,6 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-
 	if (App->end->isActive == false) 
 	{
 
@@ -192,10 +191,10 @@ update_status ModulePlayer::Update()
 			if (timerR == 50)
 			{
 				ringRang = false;
+				currentTelAnimation = &blank;
 				timerR = 0;
 			}
 		}
-
 
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
 			propeller1Joint->EnableMotor(true);
@@ -267,12 +266,36 @@ update_status ModulePlayer::Update()
 			{
 				b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
 
+				currentEmergency1Animation = &blank;
+				currentEmergency2Animation = &blank;
+				currentEmergency3Animation = &blank;
+				currentBlue1Animation = &blank;
+				currentBlue2Animation = &blank;
+				currentBlue3Animation = &blank;
+				currentBlue4Animation = &blank;
+				currentBlue5Animation = &blank;
+				currentBlue6Animation = &blank;
+				currentBlue7Animation = &blank;
+				currentBlue8Animation = &blank;
+				currentTelAnimation = &blank;
+
 				ball->body->SetTransform(startPos, ball->GetRotation());
-				
 			}
 			else if (lifeCount == 0)
 			{
-				isDead = true;
+				currentEmergency1Animation = &blank;
+				currentEmergency2Animation = &blank;
+				currentEmergency3Animation = &blank;
+				currentBlue1Animation = &blank;
+				currentBlue2Animation = &blank;
+				currentBlue3Animation = &blank;
+				currentBlue4Animation = &blank;
+				currentBlue5Animation = &blank;
+				currentBlue6Animation = &blank;
+				currentBlue7Animation = &blank;
+				currentBlue8Animation = &blank;
+				currentTelAnimation = &blank;
+
 				b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
 				App->player->ball->body->SetTransform(startPos, App->player->ball->GetRotation());
 				isDead = true;
@@ -359,7 +382,6 @@ update_status ModulePlayer::PostUpdate() {
 	}
 
 	return UPDATE_CONTINUE;
-
 }
 
 
@@ -446,7 +468,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		hasPassedB8 = false;
 	}
 
-	if (bodyA == App->scene_intro->blue1S)
+	else if (bodyA == App->scene_intro->blue1S)
 	{
 		if (hasPassedB1 == false && totalPassB == false)
 		{
@@ -455,7 +477,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		}
 	}
 
-	if (bodyA == App->scene_intro->blue2S)
+	else if (bodyA == App->scene_intro->blue2S)
 	{
 		if (hasPassedB2 == false && totalPassB == false)
 		{
@@ -464,7 +486,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		}
 	}
 
-	if (bodyA == App->scene_intro->blue3S)
+	else if (bodyA == App->scene_intro->blue3S)
 	{
 		if (hasPassedB3 == false && totalPassB == false)
 		{
@@ -473,7 +495,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		}
 	}
 
-	if (bodyA == App->scene_intro->blue4S)
+	else if (bodyA == App->scene_intro->blue4S)
 	{
 		if (hasPassedB4 == false && totalPassB == false)
 		{
@@ -482,7 +504,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		}
 	}
 
-	if (bodyA == App->scene_intro->blue5S)
+	else if (bodyA == App->scene_intro->blue5S)
 	{
 		if (hasPassedB5 == false && totalPassB == false)
 		{
@@ -491,7 +513,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		}
 	}
 
-	if (bodyA == App->scene_intro->blue6S)
+	else if (bodyA == App->scene_intro->blue6S)
 	{
 		if (hasPassedB6 == false && totalPassB == false)
 		{
@@ -500,7 +522,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		}
 	}
 
-	if (bodyA == App->scene_intro->blue7S)
+	else if (bodyA == App->scene_intro->blue7S)
 	{
 		if (hasPassedB7 == false && totalPassB == false)
 		{
@@ -509,7 +531,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		}
 	}
 
-	if (bodyA == App->scene_intro->blue8S)
+	else if (bodyA == App->scene_intro->blue8S)
 	{
 		if (hasPassedB8 == false && totalPassB == false)
 		{
@@ -528,6 +550,10 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		}
 	}
 
+	if (bodyA == App->scene_intro->greenHoleS)
+	{
+		App->scene_intro->score += 250;
+	}
 }
 
 
