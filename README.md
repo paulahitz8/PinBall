@@ -3,6 +3,8 @@
 Welcome to our representation of the game Firefighter Pinball we made for the subject Physics II in CITM.
 We hope you enjoy it!
 
+Link to the source: https://github.com/paulahitz8/PinBall
+
 ## Developers
 
 **Irene Hernández**
