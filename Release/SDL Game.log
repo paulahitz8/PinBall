@@ -1,0 +1,99 @@
+﻿  Application.cpp
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(55,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(58,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  EndScreen.cpp
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(66,10): warning C4244: 'return': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(55,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(58,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  FadeScreen.cpp
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(66,10): warning C4244: 'return': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\FadeScreen.cpp(81,19): warning C4244: '=': conversion from 'float' to 'uint', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\FadeScreen.cpp(91,16): warning C4244: '=': conversion from 'float' to 'uint', possible loss of data
+  IntroScreen.cpp
+C:\Users\irene\Documents\GitHub\PinBall\FadeScreen.cpp(92,19): warning C4244: '=': conversion from 'float' to 'uint', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(55,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(58,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  log.cpp
+  LogoScreen.cpp
+  Main.cpp
+  ModuleAudio.cpp
+  ModuleFonts.cpp
+  ModuleInput.cpp
+  ModulePhysics.cpp
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(66,10): warning C4244: 'return': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(55,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(58,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(66,10): warning C4244: 'return': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModulePhysics.cpp(331,8): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModulePhysics.cpp(430,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModulePhysics.cpp(431,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModulePhysics.cpp(476,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\irene\Documents\GitHub\PinBall\ModulePhysics.cpp(486,24): warning C4244: '=': conversion from 'int' to 'float32', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModulePhysics.cpp(690,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModulePhysics.cpp(691,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  ModulePlayer.cpp
+C:\Users\irene\Documents\GitHub\PinBall\ModulePhysics.cpp(697,27): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(55,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(58,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  ModuleRender.cpp
+  ModuleSceneIntro.cpp
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(66,10): warning C4244: 'return': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(55,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(58,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\Animation.h(66,10): warning C4244: 'return': conversion from 'const float' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,45): warning C4244: 'argument': conversion from 'TYPE' to 'TYPE', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,45): warning C4244:         with
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,45): warning C4244:         [
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,45): warning C4244:             TYPE=int
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,45): warning C4244:         ]
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,45): warning C4244:         and
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,45): warning C4244:         [
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,45): warning C4244:             TYPE=float
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,45): warning C4244:         ]
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,30): warning C4244: 'argument': conversion from 'TYPE' to 'TYPE', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,30): warning C4244:         with
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,30): warning C4244:         [
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,30): warning C4244:             TYPE=int
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,30): warning C4244:         ]
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,30): warning C4244:         and
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,30): warning C4244:         [
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,30): warning C4244:             TYPE=float
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(131,30): warning C4244:         ]
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(133,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(135,70): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(135,70): warning C4244:         with
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(135,70): warning C4244:         [
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(135,70): warning C4244:             TYPE=float
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(135,70): warning C4244:         ]
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(135,47): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(135,47): warning C4244:         with
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(135,47): warning C4244:         [
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(135,47): warning C4244:             TYPE=float
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(135,47): warning C4244:         ]
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,138): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,138): warning C4244:         with
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,138): warning C4244:         [
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,138): warning C4244:             TYPE=float
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,138): warning C4244:         ]
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,96): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,96): warning C4244:         with
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,96): warning C4244:         [
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,96): warning C4244:             TYPE=float
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,96): warning C4244:         ]
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,57): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,57): warning C4244:         with
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,57): warning C4244:         [
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,57): warning C4244:             TYPE=float
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,57): warning C4244:         ]
+  ModuleTextures.cpp
+  ModuleWindow.cpp
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,34): warning C4244: 'argument': conversion from 'TYPE' to 'int', possible loss of data
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,34): warning C4244:         with
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,34): warning C4244:         [
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,34): warning C4244:             TYPE=float
+C:\Users\irene\Documents\GitHub\PinBall\ModuleSceneIntro.cpp(138,34): warning C4244:         ]
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 257 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  SDL Game.vcxproj -> C:\Users\irene\Documents\GitHub\PinBall\Release\2D Physics - class 4.exe
