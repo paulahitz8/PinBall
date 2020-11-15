@@ -10,6 +10,8 @@ public:
 	EndScreen(Application* app, bool start_enabled = false);
 	~EndScreen();
 
+	bool isActive = false;
+
 	bool Start();
 	update_status Update();
 	update_status PostUpdate();

@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 #include "ModuleSceneIntro.h"
+#include "EndScreen.h"
 #include "LogoScreen.h"
 #include "Box2D/Box2D/Box2D.h"
 
@@ -320,10 +321,10 @@ update_status ModulePlayer::PostUpdate() {
 
 	if (isDead == true) 
 	{
-		// Module player-> Disable()
-		//ModuleSceneIntro-> Disable()
+		//App->player->Disable();
+		App->scene_intro->Disable();
+		App->end->Enable();
 		App->physics->debug = false;
-		//Module deathScreen -> Enable()
 
 	}
 
