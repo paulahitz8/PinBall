@@ -29,6 +29,7 @@ public:
 	uint rec3Fx;
 	uint flipperFx;
 	uint bonusFx;
+	uint ballSpawn;
 
 	uint lifeCount = 3;
 	int timer = 0;

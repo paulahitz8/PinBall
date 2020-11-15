@@ -44,10 +44,11 @@ bool ModulePlayer::Start()
 	rec2Fx = App->audio->LoadFx("pinball/Sounds/rec2.ogg");
 	rec3Fx = App->audio->LoadFx("pinball/Sounds/rec3.ogg");
 	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper.wav");
+	ballSpawn = App->audio->LoadFx("pinball/Sounds/Menu Selection Click.wav");
 	bonusFx = App->audio->LoadFx("pinball/Sounds/bonus.ogg");
 
 
-	posInitial = { 570, 835 };
+	posInitial = { 570, 820 };
 	vecInitial = { 570, 815 };
 	ballPos = posInitial;
 	
@@ -280,6 +281,7 @@ update_status ModulePlayer::Update()
 				currentTelAnimation = &blank;
 
 				ball->body->SetTransform(startPos, ball->GetRotation());
+				App->audio->PlayFx(ballSpawn);
 			}
 			else if (lifeCount == 0)
 			{
