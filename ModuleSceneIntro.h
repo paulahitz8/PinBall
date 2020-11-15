@@ -47,8 +47,7 @@ public:
 	PhysBody* blue8S = nullptr;
 	PhysBody* telS = nullptr;
 	PhysBody* greenHoleS = nullptr;
-	PhysBody* waterEntrance1S = nullptr;
-	PhysBody* waterEntrance2S = nullptr;
+
 
 	int fontwhite = -1;
 	int fontblack = -1;

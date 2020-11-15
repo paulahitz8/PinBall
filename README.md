@@ -3,6 +3,8 @@
 Welcome to our representation of the game Firefighter Pinball we made for the subject Physics II in CITM.
 We hope you enjoy it!
 
+Link to the source: https://github.com/paulahitz8/PinBall
+
 ## Developers
 
 **Irene Hernández**
@@ -20,10 +22,27 @@ We hope you enjoy it!
 - Left and right arrows for flippers
 - Enter key to continue
 
+## Mechanics
+
+- Combo 1: Activate all blue circles for extra points (500 pts)
+- Combo 2: Activate the three red symbols at the top for extra points (500 pts)
+
 ## Debug
 
-- F1 Show colliders/sensors
+- F1 to show colliders/sensors + mouse joint
+- Extra: Press "5" to add a ball at the location of the mouse
 
 ## Original Game
 
 - [Firefighter Pinball](https://www.classicgame.com/game/Firefighter+Pinball)
+
+**List of differences**
+
+- Music and audio effects
+- No pop ups with questions about fire emergencies
+- Different animations
+- We have less bumpers
+- We added a score and lives
+- We deleted the water tube
+
+Disclaimer: we did not find the original sound files, we could not separate sound effects from the background music. In order to grab all of the animation sprites we would have to take screenshots every milisecond. 
