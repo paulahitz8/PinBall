@@ -30,6 +30,7 @@ public:
 	uint flipperFx;
 	uint bonusFx;
 	uint ballSpawn;
+	uint boingFx;
 
 	uint lifeCount = 3;
 	int timer = 0;
