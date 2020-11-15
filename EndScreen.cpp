@@ -33,6 +33,7 @@ bool EndScreen::Start()
 
 update_status EndScreen::Update()
 {
+	SDL_Rect rect;
 	rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 	App->renderer->Blit(endScreen, 0, 0, &rect);
 
