@@ -1,6 +1,7 @@
 # Firefighter Pinbal
  
-Welcome to our representation of the game Firefighter Pinball made for the subject Physics II in CITM.
+Welcome to our representation of the game Firefighter Pinball we made for the subject Physics II in CITM.
+We hope you enjoy it!
 
 ## Developers
 
