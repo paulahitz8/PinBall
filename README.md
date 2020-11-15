@@ -20,6 +20,11 @@ We hope you enjoy it!
 - Left and right arrows for flippers
 - Enter key to continue
 
+## Mechanics
+
+- Combo 1:
+- Combo 2:
+
 ## Debug
 
 - F1 Show colliders/sensors
@@ -27,3 +32,14 @@ We hope you enjoy it!
 ## Original Game
 
 - [Firefighter Pinball](https://www.classicgame.com/game/Firefighter+Pinball)
+
+**List of differences**
+
+- Music and audio effects
+- No pop ups with questions about fire emergencies
+- Different animations
+- We have less bumpers
+- We added a score and lives
+- We deleted the water tube
+
+Disclaimer: all of these changes were made to improve the game in our opinion and make it more playable (for example, less bumpers)
