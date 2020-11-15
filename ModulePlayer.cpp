@@ -44,9 +44,10 @@ bool ModulePlayer::Start()
 	rec2Fx = App->audio->LoadFx("pinball/Sounds/rec2.ogg");
 	rec3Fx = App->audio->LoadFx("pinball/Sounds/rec3.ogg");
 	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper.wav");
-	ballSpawn = App->audio->LoadFx("pinball/Sounds/MenuSelectionClick.ogg");
+	ballSpawn = App->audio->LoadFx("pinball/Sounds/respawn.ogg");
 	bonusFx = App->audio->LoadFx("pinball/Sounds/bonus.ogg");
 	boingFx = App->audio->LoadFx("pinball/Sounds/boing.ogg");
+	ringFx = App->audio->LoadFx("pinball/Sounds/ring.ogg");
 
 
 	posInitial = { 570, 820 };
@@ -582,6 +583,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	{
 		if (ringRang == false)
 		{
+			App->audio->PlayFx(ringFx);
 			App->scene_intro->score += 20;
 			currentTelAnimation = &tel;
 			ringRang = true;
@@ -590,6 +592,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 	if (bodyA == App->scene_intro->greenHoleS)
 	{
+		App->audio->PlayFx(bonusFx);
 		App->scene_intro->score += 250;
 	}
 }

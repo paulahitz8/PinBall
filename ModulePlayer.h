@@ -31,6 +31,7 @@ public:
 	uint bonusFx;
 	uint ballSpawn;
 	uint boingFx;
+	uint ringFx;
 
 	uint lifeCount = 3;
 	int timer = 0;
