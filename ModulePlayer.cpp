@@ -44,8 +44,10 @@ bool ModulePlayer::Start()
 	rec2Fx = App->audio->LoadFx("pinball/Sounds/rec2.ogg");
 	rec3Fx = App->audio->LoadFx("pinball/Sounds/rec3.ogg");
 	flipperFx = App->audio->LoadFx("pinball/Sounds/flipper.wav");
-	ballSpawn = App->audio->LoadFx("pinball/Sounds/Menu Selection Click.wav");
+	ballSpawn = App->audio->LoadFx("pinball/Sounds/respawn.wav");
 	bonusFx = App->audio->LoadFx("pinball/Sounds/bonus.ogg");
+	boingFx = App->audio->LoadFx("pinball/Sounds/boing.wav");
+	ringFx = App->audio->LoadFx("pinball/Sounds/ring2.wav");
 
 
 	posInitial = { 570, 800 };
@@ -189,7 +191,7 @@ update_status ModulePlayer::Update()
 		if (ringRang == true)
 		{
 			timerR++;
-			if (timerR == 50)
+			if (timerR == 120)
 			{
 				ringRang = false;
 				currentTelAnimation = &blank;
@@ -197,7 +199,10 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) {
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP) 
+		
+		{
+			App->audio->PlayFx(boingFx);
 			propeller1Joint->EnableMotor(true);
 		}
 
@@ -280,7 +285,24 @@ update_status ModulePlayer::Update()
 				currentBlue8Animation = &blank;
 				currentTelAnimation = &blank;
 
+				hasPassed1 = false;
+				hasPassed2 = false;
+				hasPassed3 = false;
+				totalPass = false;
+				isTouchingBalls = false;
+				hasPassedB1 = false;
+				hasPassedB2 = false;
+				hasPassedB3 = false;
+				hasPassedB4 = false;
+				hasPassedB5 = false;
+				hasPassedB6 = false;
+				hasPassedB7 = false;
+				hasPassedB8 = false;
+				totalPassB = false;
+				ringRang = false;
+
 				ball->body->SetTransform(startPos, ball->GetRotation());
+
 				App->audio->PlayFx(ballSpawn);
 			}
 			else if (lifeCount == 0)
@@ -298,6 +320,22 @@ update_status ModulePlayer::Update()
 				currentBlue8Animation = &blank;
 				currentTelAnimation = &blank;
 
+				hasPassed1 = false;
+				hasPassed2 = false;
+				hasPassed3 = false;
+				totalPass = false;
+				isTouchingBalls = false;
+				hasPassedB1 = false;
+				hasPassedB2 = false;
+				hasPassedB3 = false;
+				hasPassedB4 = false;
+				hasPassedB5 = false;
+				hasPassedB6 = false;
+				hasPassedB7 = false;
+				hasPassedB8 = false;
+				totalPassB = false;
+				ringRang = false;
+				
 				b2Vec2 startPos = { PIXEL_TO_METERS(570.0f),PIXEL_TO_METERS(815.0f) };
 				App->player->ball->body->SetTransform(startPos, App->player->ball->GetRotation());
 				isDead = true;
@@ -333,14 +371,14 @@ update_status ModulePlayer::Update()
 		App->renderer->Blit(sensorSprites, 237, 119, &rectEmergency1);
 		App->renderer->Blit(sensorSprites, 280, 119, &rectEmergency2);
 		App->renderer->Blit(sensorSprites, 325, 119, &rectEmergency3);
-		App->renderer->Blit(sensorSprites, 307, 360, &rectBlue1);
+		App->renderer->Blit(sensorSprites, 304, 359, &rectBlue1);
 		App->renderer->Blit(sensorSprites, 332, 350, &rectBlue2);
 		App->renderer->Blit(sensorSprites, 362, 340, &rectBlue3);
 		App->renderer->Blit(sensorSprites, 447, 415, &rectBlue4);
 		App->renderer->Blit(sensorSprites, 447, 445, &rectBlue5);
 		App->renderer->Blit(sensorSprites, 447, 475, &rectBlue6);
-		App->renderer->Blit(sensorSprites, 58, 690, &rectBlue7);
-		App->renderer->Blit(sensorSprites, 502, 690, &rectBlue8);
+		App->renderer->Blit(sensorSprites, 57, 690, &rectBlue7);
+		App->renderer->Blit(sensorSprites, 501, 690, &rectBlue8);
 		App->renderer->Blit(sensorSprites, 380, 425, &rectTel);
 
 		SDL_Rect r1;
@@ -380,7 +418,7 @@ update_status ModulePlayer::PostUpdate() {
 		App->scene_intro->Disable();
 		App->end->Enable();
 		App->physics->debug = false;
-		lifeCount = 3;
+		lifeCount = 6;
 	}
 
 	return UPDATE_CONTINUE;
@@ -393,7 +431,6 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	if (hasPassed1 == true && hasPassed2 == true && hasPassed3 == true)
 	{
 		totalPass = true;
-		//App->audio->PlayFx(bonusFx);
 		App->scene_intro->score += 500;
 		currentEmergency1Animation = &blank;
 		currentEmergency2Animation = &blank;
@@ -450,7 +487,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	if (hasPassedB1 == true && hasPassedB2 == true && hasPassedB3 == true && hasPassedB4 == true && hasPassedB5 == true && hasPassedB6 == true && hasPassedB7 == true && hasPassedB8 == true)
 	{
 		totalPassB = true;
-		//App->audio->PlayFx(bonusFx);
+		App->audio->PlayFx(bonusFx);
 		App->scene_intro->score += 500;
 		currentBlue1Animation = &blank;
 		currentBlue2Animation = &blank;
@@ -546,6 +583,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	{
 		if (ringRang == false)
 		{
+			App->audio->PlayFx(ringFx);
 			App->scene_intro->score += 20;
 			currentTelAnimation = &tel;
 			ringRang = true;
@@ -554,6 +592,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 	if (bodyA == App->scene_intro->greenHoleS)
 	{
+		App->audio->PlayFx(bonusFx);
 		App->scene_intro->score += 250;
 	}
 }
